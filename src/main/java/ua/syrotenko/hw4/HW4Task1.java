@@ -15,6 +15,7 @@ public class HW4Task1 {
 
         int arraySize = 6;
 
+
         int[] randomizedArray = newMassiveAndRandom(arraySize);
 
 

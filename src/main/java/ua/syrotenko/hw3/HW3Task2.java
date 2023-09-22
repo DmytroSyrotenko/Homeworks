@@ -30,6 +30,7 @@ public class HW3Task2 {
         String reverse = "";
         for (int i = 0; i < noSpaceText.length(); i++) {
             reverse = noSpaceText.charAt(i) + reverse;
+            System.out.println(reverse);
         }
 
         boolean counter = true;

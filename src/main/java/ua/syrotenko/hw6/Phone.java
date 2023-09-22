@@ -24,11 +24,13 @@ public class Phone {
     double weight;
 
 
-    public void receiveCall(String name) {
+    public void receiveCall(String name)
+    {
         System.out.println("Звонит " + name);
     }
 
-    public String getNumber() {
+    public String getNumber()
+    {
         return this.number;
     }
 

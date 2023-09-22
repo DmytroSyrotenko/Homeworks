@@ -21,7 +21,7 @@ public class HW5Practice2 {
 
     public static int[] newMassiveAndRandom() {
 
-        int[] array = new int[25];
+        int[] array = new int[5];
 
         for (int i = 0; i < array.length; i++) {
             array[i] = ThreadLocalRandom.current().nextInt(-150, 230);
@@ -39,8 +39,6 @@ public class HW5Practice2 {
             if (array[i] < 0) {
                 qtyBoys++;
                 totalHeightOfBoys = totalHeightOfBoys + array[i];
-            } else {
-
             }
         }
         return totalHeightOfBoys / qtyBoys;
@@ -53,9 +51,7 @@ public class HW5Practice2 {
         double totalHeightOfGirls = 0;
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i] < 0) {
-
-            } else {
+            if (array[i] > 0) {
                 qtyGirls++;
                 totalHeightOfGirls = totalHeightOfGirls + array[i];
             }
