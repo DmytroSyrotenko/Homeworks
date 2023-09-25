@@ -1,7 +1,7 @@
-package java8.hw3.controller;
+package ua.syrotenko.hw3.controller;
 
-import java8.hw3.entity.Phone;
-import java8.hw3.impl.PhoneCrudServiceImpl;
+import ua.syrotenko.hw3.entity.Phone;
+import ua.syrotenko.hw3.impl.PhoneCrudServiceImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;

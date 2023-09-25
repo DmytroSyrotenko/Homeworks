@@ -1,4 +1,4 @@
-package java8.hw2;
+package ua.syrotenko.hw2;
 
 import java.io.BufferedReader;
 import java.io.IOException;

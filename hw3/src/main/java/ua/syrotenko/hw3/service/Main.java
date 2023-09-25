@@ -1,6 +1,6 @@
-package java8.hw3.service;
+package ua.syrotenko.hw3.service;
 
-import java8.hw3.controller.MainController;
+import ua.syrotenko.hw3.controller.MainController;
 
 import java.io.IOException;
 

@@ -1,7 +1,8 @@
-package java8.hw3.db;
+package ua.syrotenko.hw3.db;
 
 
-import java8.hw3.entity.Phone;
+import ua.syrotenko.hw3.entity.Phone;
+
 import java.util.Objects;
 import java.util.UUID;
 

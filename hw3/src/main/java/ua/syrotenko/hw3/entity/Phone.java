@@ -1,4 +1,4 @@
-package java8.hw3.entity;
+package ua.syrotenko.hw3.entity;
 
 public class Phone {
 

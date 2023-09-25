@@ -1,7 +1,7 @@
-package java8.hw3.impl;
+package ua.syrotenko.hw3.impl;
 
-import java8.hw3.db.PhoneDb;
-import java8.hw3.entity.Phone;
+import ua.syrotenko.hw3.entity.Phone;
+import ua.syrotenko.hw3.db.PhoneDb;
 
 public class PhoneCrudServiceImpl implements CrudService<Phone> {
 
