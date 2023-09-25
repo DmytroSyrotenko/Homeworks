@@ -12,6 +12,7 @@ public class Task3 {
         System.out.println("Enter a number from 1to10 for check");
         timeToGoHome();
 
+
     }
 
     public static void timeToGoHome() throws IOException {

@@ -28,6 +28,7 @@ public class Task1 {
                 sum += Character.getNumericValue(charArray[i]);
             }
         }
+
         System.out.println("Входные данные :" + input);
         System.out.println("Выходные данные :" + sum);
     }
