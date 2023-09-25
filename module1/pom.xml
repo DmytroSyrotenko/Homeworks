@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>syrotenko.ua</groupId>
-    <artifactId>hw3</artifactId>
+    <artifactId>module1</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -16,7 +16,7 @@
     </properties>
 
     <build>
-        <finalName>hw3</finalName>
+        <finalName>module1</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

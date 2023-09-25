@@ -13,7 +13,7 @@
 
 Playgroun*.java
 Edu*.java
-HW*.java
+
 
 # Log file
 *.log
@@ -55,6 +55,8 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+**/target/**
 
 
 
