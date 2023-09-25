@@ -1,4 +1,4 @@
-package java8.module1.service;
+package java8.module1.controller;
 
 import java8.module1.controller.MainController;
 

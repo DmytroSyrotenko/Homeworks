@@ -11,12 +11,25 @@ public class Db {
 
     private Student[] students = new Student[2];
     private Group[] groups = new Group[2];
-    private GroupStudent[] groupStudents = new GroupStudent[2];
+    private GroupStudent[] groupsStudents = new GroupStudent[2];
     private int lastStudentIndex = 0;
     private int lastGroupIndex = 0;
     private int lastGroupStudentIndex = 0;
 
-    ///////student
+    private static Db instance;
+    private Db(){};
+
+    public static Db getInstance() {
+        if (instance != null) {
+            return instance;
+        } else {
+            var db = new Db();
+            instance = db;
+            return db;
+        }
+    }
+
+    /*student*/
     public void createStudent(Student student) {
         if (lastStudentIndex == students.length - 1) {
             Student[] newStudents = new Student[students.length * 2];
@@ -26,7 +39,6 @@ public class Db {
         } else {
             addStudent(student);
         }
-
     }
 
     public Student[] findAllStudents() {
@@ -41,9 +53,7 @@ public class Db {
     }
 
     public void deleteStudent(String id) {
-
         int index = 0;
-
         for (int i = 0; i < students.length; i++) {
             if (Objects.equals(students[i].getId(), id)) {
                 index = i;
@@ -52,43 +62,33 @@ public class Db {
                 System.arraycopy(students, index + 1, newStudents, index, students.length - index - 1);
                 students = newStudents;
                 lastStudentIndex--;
-                System.out.println("Student with id " + id + " deleted");
                 break;
             }
         }
     }
 
-
     public void updateStudent(Student student) {
-
-
         for (int i = 0; i < students.length; i++) {
             if (Objects.equals(students[i].getId(), student.getId())) {
                 students[i] = student;
-                System.out.println("Student has been updated");
                 break;
             }
         }
-
     }
 
 
     public Student findOneStudent(String id) {
-
         Student student = new Student();
-
         for (Student value : students) {
             if (value != null && Objects.equals(value.getId(), id)) {
-
                 student = value;
                 return student;
             }
         }
-
         return student;
     }
 
-    /////////group
+    /*group*/
     public void createGroup(Group group) {
         if (lastGroupIndex == groups.length - 1) {
             Group[] newGroups = new Group[groups.length * 2];
@@ -98,14 +98,11 @@ public class Db {
         } else {
             addGroup(group);
         }
-
-        System.out.println("Group created");
     }
 
     public Group[] findAllGroups() {
         return groups;
     }
-
 
     private void addGroup(Group group) {
         group.setId(UUID.randomUUID().toString());
@@ -114,9 +111,7 @@ public class Db {
     }
 
     public void deleteGroup(String id) {
-
         int index = 0;
-
         for (int i = 0; i < groups.length; i++) {
             if (Objects.equals(groups[i].getId(), id)) {
                 index = i;
@@ -125,53 +120,102 @@ public class Db {
                 System.arraycopy(groups, index + 1, newGroups, index, groups.length - index - 1);
                 groups = newGroups;
                 lastGroupIndex--;
-                System.out.println("Group with name " + id + " deleted");
                 break;
             }
         }
     }
 
-
     public void updateGroup(Group group) {
-
         for (int i = 0; i < groups.length; i++) {
             if (groups[i] != null && Objects.equals(groups[i].getId(), group.getId())) {
                 groups[i] = group;
-                System.out.println("Group has been updated");
                 break;
             }
         }
-
     }
 
-
     public Group findOneGroup(String id) {
-
         Group group = new Group();
-
         for (Group value : groups) {
             if (value != null && Objects.equals(value.getId(), id)) {
                 group = value;
                 return group;
             }
         }
-
         return group;
     }
 
-    /////////group-student
+    /*group-student*/
 
     public void createGroupStudent(GroupStudent groupStudent) {
-        if (lastGroupStudentIndex == groupStudents.length - 1) {
-            GroupStudent[] newGroupStudents = new GroupStudent[groupStudents.length * 2];
-            System.arraycopy(groupStudents, 0, newGroupStudents, 0, groupStudents.length);
-            groupStudents = newGroupStudents;
-
+        if (lastGroupStudentIndex == groupsStudents.length - 1) {
+            GroupStudent[] newGroupStudents = new GroupStudent[groupsStudents.length * 2];
+            System.arraycopy(groupsStudents, 0, newGroupStudents, 0, groupsStudents.length);
+            groupsStudents = newGroupStudents;
         }
-        groupStudents[lastGroupStudentIndex] = groupStudent;
+        groupsStudents[lastGroupStudentIndex] = groupStudent;
         lastGroupStudentIndex++;
 
     }
 
+    public GroupStudent[] findAllGroupsAndStudents() {
+        return groupsStudents;
+    }
 
+    public void deleteStudentFromGroup(String studentId,String groupId) {
+        int index = 0;
+        for (int i = 0; i < groupsStudents.length; i++) {
+            if ( Objects.equals(groupsStudents[i].getGroupId(), groupId) && Objects.equals(groupsStudents[i].getStudentId(), studentId)) {
+                index = i;
+                GroupStudent[] newGroupsStudents = new GroupStudent[groupsStudents.length - 1];
+                System.arraycopy(groupsStudents, 0, newGroupsStudents, 0, index);
+                System.arraycopy(groupsStudents, index + 1, newGroupsStudents, index, groupsStudents.length - index - 1);
+                groupsStudents = newGroupsStudents;
+                lastGroupStudentIndex--;
+                break;
+            }
+        }
+    }
+    public void deleteStudentFromAllGroups(String studentId) {
+        int index = 0;
+        for (int i = 0; i < groupsStudents.length; i++) {
+            if (Objects.equals(groupsStudents[i].getStudentId(), studentId)) {
+                index = i;
+                GroupStudent[] newGroupsStudents = new GroupStudent[groupsStudents.length - 1];
+                System.arraycopy(groupsStudents, 0, newGroupsStudents, 0, index);
+                System.arraycopy(groupsStudents, index + 1, newGroupsStudents, index, groupsStudents.length - index - 1);
+                groupsStudents = newGroupsStudents;
+                lastGroupStudentIndex--;
+            }
+        }
+    }
+
+    /*support methods*/
+    public boolean isPresentS(String id) {
+        boolean b = false;
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null && students[i].getId().equals(id)) {
+                b = true;
+                break;
+            } else if (i == students.length - 1) {
+                System.out.println("Id not found,please try again");
+                return b;
+            }
+        }
+        return b;
+    }
+
+    public boolean isPresentG(String id) {
+        boolean b = false;
+        for (int i = 0; i < groups.length; i++) {
+            if (groups[i] != null && groups[i].getId().equals(id)) {
+                b = true;
+                break;
+            } else if (i == groups.length - 1) {
+                System.out.println("Id not found,please try again");
+                return b;
+            }
+        }
+        return b;
+    }
 }

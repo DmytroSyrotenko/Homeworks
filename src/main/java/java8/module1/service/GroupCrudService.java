@@ -1,4 +1,4 @@
-package java8.module1.Impl.interfaces;
+package java8.module1.service;
 
 import java8.module1.entity.Group;
 
