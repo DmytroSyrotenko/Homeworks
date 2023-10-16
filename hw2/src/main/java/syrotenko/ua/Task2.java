@@ -1,16 +1,15 @@
 package syrotenko.ua;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Task2 {
 
     public static void charactersCount() throws IOException {
-
-        //BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-        String input = "14wtt!7".replaceAll("[^a-zA-Z]", "");//bufferedReader.readLine().replaceAll("[^a-zA-Z]", "");
-
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String input = bufferedReader.readLine().replaceAll("[^a-zA-Z]", "");
 
         char[] array = input.toCharArray();
         Arrays.sort(array);
@@ -24,11 +23,8 @@ public class Task2 {
                 }
 
             }
-            System.out.println(array[i] +"-" +counter);
+            System.out.println(array[i] + "-" + counter);
             counter = 0;
         }
-
     }
-
-
 }

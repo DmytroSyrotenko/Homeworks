@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 
 public class MyReader {
 
-
     public final BufferedReader bufferedReader;
 
     public MyReader() {

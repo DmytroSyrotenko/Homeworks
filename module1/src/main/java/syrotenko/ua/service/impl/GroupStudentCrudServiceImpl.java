@@ -1,6 +1,5 @@
 package syrotenko.ua.service.impl;
 
-
 import syrotenko.ua.db.Db;
 import syrotenko.ua.entity.GroupStudent;
 
@@ -16,7 +15,6 @@ public class GroupStudentCrudServiceImpl {
         }
     }
 
-
     public void deleteGroupStudent(String studentId, String groupId) {
         db.deleteStudentFromGroup(studentId, groupId);
         System.out.println("Student deleted from group");
@@ -25,6 +23,4 @@ public class GroupStudentCrudServiceImpl {
     public GroupStudent[] findAllGroupsAndStudents() {
         return db.findAllGroupsAndStudents();
     }
-
 }
-

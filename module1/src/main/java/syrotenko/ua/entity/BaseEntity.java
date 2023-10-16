@@ -2,9 +2,7 @@ package syrotenko.ua.entity;
 
 public abstract class BaseEntity {
 
-
     private String id;
-
 
     public String getId() {
         return id;
@@ -20,6 +18,4 @@ public abstract class BaseEntity {
                 "id='" + id + '\'' +
                 '}';
     }
-
-
 }

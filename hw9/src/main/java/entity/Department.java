@@ -5,7 +5,6 @@ public class Department extends BaseEntity {
     String deptName;
     int personalQuantity;
 
-
     public String getDeptName() {
         return deptName;
     }

@@ -1,6 +1,5 @@
 package syrotenko.ua.service;
 
-
 import syrotenko.ua.entity.BaseEntity;
 
 public interface CrudService<BE extends BaseEntity> {
@@ -9,5 +8,4 @@ public interface CrudService<BE extends BaseEntity> {
     void delete(String id);
     BE findOne(String id);
     BE[] findAll();
-
 }

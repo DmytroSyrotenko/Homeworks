@@ -1,12 +1,10 @@
 package syrotenko.ua.service.impl;
 
-
 import syrotenko.ua.db.Db;
 import syrotenko.ua.entity.Student;
 import syrotenko.ua.service.StudentCrudService;
 
 public class StudentCrudServiceImpl implements StudentCrudService {
-
 
     Db db = Db.getInstance();
 
@@ -32,8 +30,6 @@ public class StudentCrudServiceImpl implements StudentCrudService {
             db.deleteStudentFromAllGroups(id);
             System.out.println("also deleted from all groups");
         }
-
-
     }
 
     @Override
@@ -43,7 +39,6 @@ public class StudentCrudServiceImpl implements StudentCrudService {
         }
         return new Student();
     }
-
 
     @Override
     public Student[] findAll() {

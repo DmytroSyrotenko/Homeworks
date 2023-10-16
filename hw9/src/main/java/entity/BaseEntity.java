@@ -4,8 +4,6 @@ public abstract class BaseEntity {
 
     String id;
 
-
-
     @Override
     public String toString() {
         return "BaseEntity{" +

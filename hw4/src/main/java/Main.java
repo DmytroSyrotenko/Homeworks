@@ -4,22 +4,17 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Main {
+
     public static void main(String[] args) throws IOException {
-
-
-
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Choose start point.Use numbers only");
         int start = Integer.parseInt(bufferedReader.readLine());
         System.out.println("Choose finish point.Use numbers only");
         int finish = Integer.parseInt(bufferedReader.readLine());
-
         steps(start, finish);
     }
 
-
     public static void steps(int start, int finish) {
-
         int[][] relations = {
                 {11, 18},
                 {14, 3},
@@ -41,13 +36,10 @@ public class Main {
                 {0, 0},
                 {88, 7},
                 {7, 122},
-
         };
-
 
         int[] arrFrom = new int[relations.length];
         int[] arrTo = new int[relations.length];
-
 
         for (int i = 0; i < relations.length; i++) {
             for (int j = 0; j < relations[i].length; j++) {
@@ -72,14 +64,11 @@ public class Main {
         int currentNumber = start;
         int lastIndex = -1;
 
-
         int[] pathArray = new int[arrFrom.length];
         Arrays.fill(pathArray, -2);
 
-
         for (int i = 0; i < arrFrom.length; i++) {
             if (arrFrom[i] == currentNumber) {
-
                 if (arrTo[i] == finish) {
                     System.out.println("----Congratulations,you can send a message using route below:");
                     lastIndex++;

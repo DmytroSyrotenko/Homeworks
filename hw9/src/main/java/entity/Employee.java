@@ -40,6 +40,4 @@ public class Employee extends BaseEntity {
     public void setAge(int age) {
         this.age = age;
     }
-
-
 }
