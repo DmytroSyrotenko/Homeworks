@@ -1,4 +1,4 @@
-package buildAndCheck.checks;
+package buildAndCheck;
 
 import db.Db;
 import entity.Link;
@@ -12,7 +12,7 @@ public class Check {
 
     public void checkForInput() {
         if (!isNumberOfCitiesOk(db.getAllCities().size(), db.getQtyOfCities())) {
-            throw new RuntimeException("Number of cities is not correct.Please check input");
+            throw new RuntimeException("Number of cities is not correct or extra information is present before number of cities.Please check input");
         }
         if (!isPricesBetween2CitiesSame(db.getAllLinks().size(), db.getQtyOfRelations())) {
             throw new RuntimeException("Price between two cities or quantity of proposed routes in one of the cities is incorrect.Please check input");

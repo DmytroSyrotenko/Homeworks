@@ -15,8 +15,6 @@ public class Cost {
     public Integer getCheapestCost(List<List<Integer>> possibleRoutes) {
         Map<List<Integer>, Integer> map = new HashMap<>();
         possibleRoutes.forEach(r -> map.put(r, costPerRoute(r)));
-        System.out.println(map);
-        System.out.println("cheapestCost="+map.values().stream().mapToInt(integer -> integer).filter(s -> s < maxCost).min().orElse(0));
         return map.values().stream().mapToInt(integer -> integer).filter(s -> s < maxCost).min().orElse(0);
     }
 

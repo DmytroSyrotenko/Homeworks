@@ -1,4 +1,4 @@
-package buildAndCheck.checks;
+package buildAndCheck;
 
 import db.Db;
 import entity.Link;
