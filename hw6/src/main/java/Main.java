@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static <V> void main(String[] args) {
 
         MyDictionary<Integer, String> myDictionary = new MyDictionary<>();
         System.out.println("myDictionary values= " + myDictionary);
