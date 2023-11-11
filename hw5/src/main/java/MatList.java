@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 public class MatList<E extends Number> implements Comparator<Number> {

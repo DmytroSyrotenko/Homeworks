@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 
 public class Task3 {
 
-
     public static void timeToGoHome() throws IOException {
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -28,7 +27,5 @@ public class Task3 {
 
         System.out.println("Входные данные: " + quantityOfLessons);
         System.out.println("Выходные данные: " + endHour + " " + endMinute);
-
     }
-
 }

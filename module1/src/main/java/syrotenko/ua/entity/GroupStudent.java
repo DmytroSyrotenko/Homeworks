@@ -5,7 +5,6 @@ public class GroupStudent {
     private String groupId;
     private String studentId;
 
-
     public String getGroupId() {
         return groupId;
     }

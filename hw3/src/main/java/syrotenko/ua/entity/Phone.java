@@ -1,7 +1,6 @@
-package ua.syrotenko.hw3.entity;
+package syrotenko.ua.entity;
 
 public class Phone {
-
 
     String brand;
     String model;

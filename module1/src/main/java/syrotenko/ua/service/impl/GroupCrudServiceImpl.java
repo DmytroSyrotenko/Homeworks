@@ -1,6 +1,5 @@
 package syrotenko.ua.service.impl;
 
-
 import syrotenko.ua.db.Db;
 import syrotenko.ua.entity.Group;
 import syrotenko.ua.service.GroupCrudService;

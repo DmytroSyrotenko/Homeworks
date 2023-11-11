@@ -6,7 +6,6 @@ public class Student extends BaseEntity{
     private String lastName;
     private int age;
 
-
     public String getFirstName() {
         return firstName;
     }

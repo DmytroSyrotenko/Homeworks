@@ -21,8 +21,6 @@ public class Db {
     private Db() {
     }
 
-    ;
-
     public static Db getInstance() {
         if (instance != null) {
             return instance;

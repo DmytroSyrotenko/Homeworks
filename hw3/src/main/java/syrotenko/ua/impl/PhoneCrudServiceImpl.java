@@ -1,7 +1,7 @@
-package ua.syrotenko.hw3.impl;
+package syrotenko.ua.impl;
 
-import ua.syrotenko.hw3.entity.Phone;
-import ua.syrotenko.hw3.db.PhoneDb;
+import syrotenko.ua.db.PhoneDb;
+import syrotenko.ua.entity.Phone;
 
 public class PhoneCrudServiceImpl implements CrudService<Phone> {
 

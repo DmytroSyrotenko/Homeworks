@@ -1,7 +1,7 @@
-package ua.syrotenko.hw3.controller;
+package syrotenko.ua.controller;
 
-import ua.syrotenko.hw3.entity.Phone;
-import ua.syrotenko.hw3.impl.PhoneCrudServiceImpl;
+import syrotenko.ua.entity.Phone;
+import syrotenko.ua.impl.PhoneCrudServiceImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +18,6 @@ public class MainController {
             crud(position, bufferedReader);
             menu();
         }
-
     }
 
     private void menu() {
@@ -29,10 +28,7 @@ public class MainController {
         System.out.println("If you want FIND ONE phone please enter 4");
         System.out.println("If you want FIND ALL phones please enter 5");
         System.out.println("If you want CLOSE app please enter 6");
-
-
     }
-
 
     private void crud(String position, BufferedReader bufferedReader) throws IOException {
         switch (position) {
