@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <form method="post" th:action="@{'/students/update/' + ${student.getId()}}" th:object="${student}">
+        <div class="mb-3">
+            <label for="exampleInputFirstName" class="form-label">First name</label>
+            <input type="text" class="form-control" id="exampleInputFirstName"
+                   th:field="*{firstName}"
+                   th:value="${student.getFirstName()}">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="exampleInputLastName"
+                   th:field="*{lastName}"
+                   th:value="${student.getLastName()}">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputAge" class="form-label">Age</label>
+            <input type="number" class="form-control" id="exampleInputAge"
+                   th:field="*{age}"
+                   th:value="${student.getAge()}">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>

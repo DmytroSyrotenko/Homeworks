@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <form method="post" th:action="@{'/groups/update/' + ${group.getId()}}" th:object="${group}">
+        <div class="mb-3">
+            <label for="exampleInputGroupName" class="form-label">Group name</label>
+            <input type="text" class="form-control" id="exampleInputGroupName"
+                   th:field="*{name}"
+                   th:value="${group.getName()}">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputGroupInfo" class="form-label">Group info</label>
+            <input type="text" class="form-control" id="exampleInputGroupInfo"
+                   th:field="*{generalInfo}"
+                   th:value="${group.getGeneralInfo()}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3>
+                        All Groups
+                    </h3>
+                </div>
+                <div>
+                    <a type="button" class="btn btn-primary" th:href="@{/groups/new}">new group</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-sm table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Group Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Info & participants/actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="group : ${groups}">
+                    <td th:text="${group.getName()}"></td>
+                    <td>
+                        <a type="button" class="btn btn-primary"
+                           th:href="@{'/groups/update/' + ${group.getId()}}">update</a>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-danger"
+                           th:href="@{'/groups/delete/' + ${group.getId()}}">delete</a>
+                    </td>
+                    <td>
+                        <a  type="button" class="btn btn-info"
+                           th:href="@{'/groups/info/' + ${group.getId()}}">get info</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

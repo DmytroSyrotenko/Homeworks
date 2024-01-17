@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3>
+                        All Students
+                    </h3>
+                </div>
+                <div>
+                    <a type="button" class="btn btn-primary" th:href="@{/students/new}">new student</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-sm table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Departments</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${students}">
+                    <td th:text="${student.getFirstName()}"></td>
+                    <td th:text="${student.getLastName()}"></td>
+                    <td th:text="${student.getAge()}"></td>
+                    <td>
+                        <div class="d-flex flex-column">
+                            <a th:each="group,iter : ${student.getGroupInfoList()}"
+                               type="button"
+                               class="btn btn-sm btn-outline-dark"
+                               th:classappend="${iter.first ? '' : 'mt-1'}"
+                               th:href="@{'/groups/info/' + ${group.getGroupId()}}"
+                               th:text="${group.getGroupName()}">name</a>
+                        </div>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-primary"
+                           th:href="@{'/students/update/' + ${student.getId()}}">update</a>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-danger"
+                           th:href="@{'/students/delete/' + ${student.getId()}}">delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

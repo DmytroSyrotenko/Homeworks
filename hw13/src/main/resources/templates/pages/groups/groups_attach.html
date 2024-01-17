@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <form method="post" th:action="@{'/groups/attach/' + ${group.getId()}}" th:object="${group}">
+
+        <div class="mb-3">
+            <input type="hidden" class="form-control" id="exampleInputGroupName"
+                   th:field="*{name}"
+                   th:value="${group.getName()}">
+        </div>
+        <div class="mb-3">
+            <input type="hidden" class="form-control" id="exampleInputGroupInfo"
+                   th:field="*{generalInfo}"
+                   th:value="${group.getGeneralInfo()}">
+        </div>
+        <div class="mb-3">
+            <label for="dropDownList" class="form-label">Attach student to group</label>
+            <select th:field="*{studentIdForDeleteOrAttach}" type="number" class="form-control" id="dropDownList">
+                <option value="null">select</option>
+                <option th:each="student : ${students}"
+                        th:value="${student.getId()}"
+                        th:text="${student.getFirstName()}+' '+${student.getLastName()}">
+                </option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Attach</button>
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <form method="post" th:action="@{/groups/new}" th:object="${group}">
+        <div class="mb-3">
+            <label for="exampleInputGroupName" class="form-label">Group name</label>
+            <input type="text" class="form-control" id="exampleInputGroupName"
+                   th:field="*{name}">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputGroupGeneralInfo" class="form-label">General info</label>
+            <input type="text" class="form-control" id="exampleInputGroupGeneralInfo"
+                   th:field="*{generalInfo}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+</body>
+</html>

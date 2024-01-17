@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="main_content">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 th:text="${group.getName()}"></h3>
+                    <p th:text="${group.getGeneralInfo()}"></p>
+                </div>
+                <div>
+                    <a a type="button" class="btn btn-info"
+                       th:href="@{'/groups/attach/' + ${group.getId()}}">add student</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-sm table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Students in group</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="student : ${group.getStudentInfoList()}">
+                    <td th:text="${student.getFirstName()}+' '+ ${student.getLastName()} "></td>
+                    <td>
+                        <form method="post" th:action="@{'/groups/remove/' + ${group.getId()}}" class="inline">
+
+                            <input type="hidden" class="form-control" id="exampleInputGroupInfo"
+                                   th:object="${group}"
+                                   th:field="*{studentIdForDeleteOrAttach}">
+                            <button type="submit" name="submit_param" value="submit_value" class="link-button">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
