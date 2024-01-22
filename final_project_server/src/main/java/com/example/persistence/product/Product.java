@@ -1,9 +1,11 @@
-package com.example.persistence;
+package com.example.persistence.product;
 
 
+import com.example.persistence.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +13,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@ToString  //TODO убрать
 @Table(name = "products")
 public class Product extends BaseEntity {
 
@@ -20,9 +23,6 @@ public class Product extends BaseEntity {
 
     @Column(nullable = false, length = 4096)
     private String description;
-
-    @Column(nullable = false)
-    private String displayResolution;
 
     @ManyToMany
     @JoinTable(

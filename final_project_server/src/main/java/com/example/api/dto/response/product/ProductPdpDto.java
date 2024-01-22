@@ -1,2 +1,4 @@
-package com.example.api.dto.response.product;public class ProductPdpDto {
+package com.example.api.dto.response.product;
+
+public class ProductPdpDto {
 }

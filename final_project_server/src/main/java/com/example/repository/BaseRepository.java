@@ -1,2 +1,10 @@
-package com.example.repository;public interface BaseRepository {
+package com.example.repository;
+
+import com.example.persistence.BaseEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+
+@NoRepositoryBean
+
+public interface BaseRepository<E extends BaseEntity> extends JpaRepository<E, Long> {
 }

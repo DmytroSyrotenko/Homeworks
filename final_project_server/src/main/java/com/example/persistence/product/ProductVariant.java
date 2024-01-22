@@ -1,5 +1,6 @@
-package com.example.persistence;
+package com.example.persistence.product;
 
+import com.example.persistence.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -7,13 +8,15 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Digits;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "product_variant")
+@ToString  //TODO убрать
+@Table(name = "product_variants")
 public class ProductVariant extends BaseEntity implements Comparable<ProductVariant> {
 
     @Column(nullable = false)

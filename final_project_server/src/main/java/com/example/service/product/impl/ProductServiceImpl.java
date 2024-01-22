@@ -1,10 +1,10 @@
-package com.example.service.impl;
+package com.example.service.product.impl;
 
 import com.example.exceptions.EntityUnexistsException;
 import com.example.exceptions.NotValidFieldDataException;
 import com.example.persistence.product.Product;
 import com.example.repository.product.ProductRepository;
-import com.example.service.ProductService;
+import com.example.service.product.ProductService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

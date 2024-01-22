@@ -1,6 +1,7 @@
-package com.example.persistence;
+package com.example.persistence.product;
 
 
+import com.example.persistence.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "product_images")
-public class ProductImage extends BaseEntity{
+public class ProductImage extends BaseEntity {
 
     @Column(name = "image_url", nullable = false)
     private String imageUrl;
