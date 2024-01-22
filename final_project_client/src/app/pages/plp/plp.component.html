@@ -1,0 +1,14 @@
+<ng-container *ngIf="products$ | async as products">
+  <div class="row mt-4">
+    <div class="col-6" *ngFor="let product of products">
+      <div class="card" (click)="goToProductDetails(product.id)">
+        <img src="{{ product?.image }}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{ product?.name }}</h5>
+          <p class="card-text">From {{ product?.minPrice }} UAH to {{ product?.maxPrice }} UAH</p>
+          <a href="#" class="btn btn-primary">Bye</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
