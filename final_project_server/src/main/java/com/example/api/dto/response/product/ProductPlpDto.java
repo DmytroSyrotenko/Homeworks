@@ -24,8 +24,8 @@ public class ProductPlpDto extends ResponseDto {
 
     public ProductPlpDto(Product product, List<ProductVariant> variants) {
         setId(product.getId());
-        setName(product.getName());
-        setDescription(product.getDescription());
+        this.name = product.getName();
+        this.description = product.getDescription();// TODO решить где хранить дескрипшн
         Set<ProductImage> images = product.getProductImages();
         if (CollectionUtils.isNotEmpty(images)) {
             ProductImage productImage = images

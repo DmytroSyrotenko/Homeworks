@@ -1,1 +1,114 @@
-<p>pdp works!</p>
+<ng-container *ngIf="{
+product:productPdp$|async ,
+priceVariant:price$|async
+} as config">
+
+  <div class="card mt-4 ">
+    <div class="card-header">
+      {{ config.product?.name }}
+    </div>
+    <div class="body">
+      <div class="d-flex justify-content around">
+        <div *ngFor="let image of config.product?.images">
+          <img src="{{image}}" width="90" height="150">
+        </div>
+      </div>
+      <div class="d-flex">
+        <span>{{ config.product?.description }}</span>
+      </div>
+      <div class="d-flex-column">
+        <div>
+          <span class="fs-5 me-4">Display resolution</span>
+          <span>{{ config.product?.displayResolution }}</span>
+        </div>
+        <div>
+          <span class="fs-5 me-4"> Camera</span>
+          <span>{{ config.product?.camera }}</span>
+        </div>
+        <div>
+          <span class="fs-5 me-4">Battery</span>
+          <span>{{ config.product?.battery }}</span>
+        </div>
+        <div>
+          <span class="fs-5 me-4">Processor</span>
+          <span>{{ config.product?.cpu }}</span>
+        </div>
+      </div>
+      <div class="d-flex mt-4 mb-4">
+        Configuration
+      </div>
+      <div class="d-flex">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-2">
+              SSD
+            </div>
+            <div class="col-10">
+              <ng-container *ngFor="let ssd of ssdSet">
+                <button
+                  [class.btn-secondary]="ssd===form.controls['ssd'].value"
+                  [class.btn-outline-secondary]="ssd!==form.controls['ssd'].value"
+                  type="button"
+                  class="btn button-variant me-2"
+                  (click)="addSsd(ssd)">{{ ssd }}
+                </button>
+              </ng-container>
+            </div>
+
+            <div class="col-2 mt-2">
+              RAM
+            </div>
+            <div class="col-10 mt-2">
+              <ng-container *ngFor="let ram of ramSet">
+                <button
+                  [class.btn-secondary]="ram===form.controls['ram'].value"
+                  [class.btn-outline-secondary]="ram!==form.controls['ram'].value"
+                  type="button"
+                  class="btn button-variant me-2"
+                  (click)="addRam(ram)">{{ ram }}
+                </button>
+              </ng-container>
+            </div>
+
+            <div class="col-2 mt-2">
+              COLOR
+            </div>
+            <div class="col-10 mt-2">
+              <ng-container *ngFor="let color of colorSet">
+                <button
+                  [class.btn-secondary]="color===form.controls['color'].value"
+                  [class.btn-outline-secondary]="color!==form.controls['color'].value"
+                  type="button"
+                  class="btn button-variant me-2"
+                  (click)="addColor(color)">{{ color }}
+                </button>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-2 fs-2 mt-2">
+              PRICE
+            </div>
+            <div class="col-10 mt-2" *ngIf="config.priceVariant?.price">
+              <button
+                type="button"
+                class="btn btn-outline-secondary button-variant me-2"(click)="shopNow(config.priceVariant?.productId)">Купити {{ config.priceVariant?.price }}
+              </button>
+            </div>
+            <div class="col-10 mt-2" *ngIf="!config.priceVariant?.price">
+              Not configured
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+

@@ -5,7 +5,8 @@
         <img src="{{ product?.image }}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ product?.name }}</h5>
-          <p class="card-text">From {{ product?.minPrice }} UAH to {{ product?.maxPrice }} UAH</p>
+          <p class="card-text">{{ product?.description }}</p>
+          <h6 class="card-text">From {{ product?.minPrice }} UAH to {{ product?.maxPrice }} UAH</h6>
           <a href="#" class="btn btn-primary">Bye</a>
         </div>
       </div>
