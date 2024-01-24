@@ -36,7 +36,8 @@ public class ProductPlpDto extends ResponseDto {
             this.image = productImage.getImageUrl();
         }
         if (CollectionUtils.isEmpty(variants)) {
-            throw new NotValidFieldDataException("Product variants is not present");
+            throw new NotValidFieldDataException("Product variants is not present." +
+                    "Add product variants or delete product from db");
         }
         ProductVariant max = variants.stream().max(ProductVariant::compareTo).get();
         ProductVariant min = variants.stream().min(ProductVariant::compareTo).get();
