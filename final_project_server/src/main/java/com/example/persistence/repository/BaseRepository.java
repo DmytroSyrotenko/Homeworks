@@ -1,6 +1,6 @@
-package com.example.repository;
+package com.example.persistence.repository;
 
-import com.example.persistence.BaseEntity;
+import com.example.persistence.entity.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

@@ -1,8 +1,8 @@
 package com.example.service.product.impl;
 
-import com.example.persistence.product.Product;
-import com.example.persistence.product.ProductVariant;
-import com.example.repository.product.ProductVariantRepository;
+import com.example.persistence.entity.product.Product;
+import com.example.persistence.entity.product.ProductVariant;
+import com.example.persistence.repository.product.ProductVariantRepository;
 import com.example.service.product.ProductVariantService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

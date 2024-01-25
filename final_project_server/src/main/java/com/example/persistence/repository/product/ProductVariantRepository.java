@@ -1,8 +1,8 @@
-package com.example.repository.product;
+package com.example.persistence.repository.product;
 
-import com.example.persistence.product.Product;
-import com.example.persistence.product.ProductVariant;
-import com.example.repository.BaseRepository;
+import com.example.persistence.entity.product.Product;
+import com.example.persistence.entity.product.ProductVariant;
+import com.example.persistence.repository.BaseRepository;
 
 import java.util.List;
 

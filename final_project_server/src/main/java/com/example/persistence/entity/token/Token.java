@@ -1,4 +1,4 @@
-package com.example.persistence.repository.token;
+package com.example.persistence.entity.token;
 
 import com.example.persistence.entity.BaseEntity;
 import com.example.persistence.entity.user.User;
@@ -25,7 +25,7 @@ public class Token extends BaseEntity {
     public User user;
 
     public Token() {
-        this.expired = false;  
+        this.expired = false;
     }
 
 }

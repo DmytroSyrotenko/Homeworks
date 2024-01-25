@@ -2,8 +2,8 @@ package com.example.facade.impl;
 
 import com.example.api.dto.response.product.ProductPdpDto;
 import com.example.facade.ProductPdpFacade;
-import com.example.persistence.product.Product;
-import com.example.persistence.product.ProductVariant;
+import com.example.persistence.entity.product.Product;
+import com.example.persistence.entity.product.ProductVariant;
 import com.example.service.product.ProductService;
 import com.example.service.product.ProductVariantService;
 import lombok.AllArgsConstructor;

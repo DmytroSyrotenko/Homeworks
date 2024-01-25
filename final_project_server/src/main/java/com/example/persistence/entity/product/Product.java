@@ -1,7 +1,7 @@
-package com.example.persistence.product;
+package com.example.persistence.entity.product;
 
 
-import com.example.persistence.BaseEntity;
+import com.example.persistence.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

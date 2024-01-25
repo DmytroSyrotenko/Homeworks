@@ -1,9 +1,8 @@
 package com.example.api.dto.response.product;
 
 import com.example.api.dto.response.ResponseDto;
-import com.example.persistence.product.ProductColor;
-import com.example.persistence.product.ProductVariant;
-import jakarta.persistence.Column;
+import com.example.persistence.entity.product.ProductColor;
+import com.example.persistence.entity.product.ProductVariant;
 import lombok.Getter;
 import lombok.Setter;
 

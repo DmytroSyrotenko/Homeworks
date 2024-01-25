@@ -1,9 +1,9 @@
 package com.example.api.dto.response.product;
 
 import com.example.api.dto.response.ResponseDto;
-import com.example.persistence.product.Product;
-import com.example.persistence.product.ProductImage;
-import com.example.persistence.product.ProductVariant;
+import com.example.persistence.entity.product.Product;
+import com.example.persistence.entity.product.ProductImage;
+import com.example.persistence.entity.product.ProductVariant;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.collections4.CollectionUtils;
