@@ -1,18 +1,19 @@
 package com.example.config.security;
 
-import com.example.persistence.type.RoleType;
-import lombok.AllArgsConstructor;
+
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+import static com.example.persistence.type.RoleType.PERSONAL;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.HttpMethod.PUT;
@@ -35,27 +36,31 @@ import static com.example.persistence.type.PermissionType.PERSONAL_DELETE;
 @RequiredArgsConstructor
 public class AuthorizationSecurityConfig {
 
-    private final  AuthenticationProvider authenticationProvider;
+    private final AuthenticationProvider authenticationProvider;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    @Bean
+    //ето тот класс который срабатывает перед всеми и решает допуски к ендпоинтам?
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http
+
+                //TODO оазобраться с тем что не работает-не пропускает из за **?  get permission against name
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/open/**","/api/auth/**", "/swagger-ui.html").permitAll()
-                        .requestMatchers(POST, "/api/personal/**").hasAuthority(PERSONAL_CREATE.name())
-                        .requestMatchers(GET, "/api/personal/**").hasAuthority(PERSONAL_READ.name())
-                        .requestMatchers(PUT, "/api/personal/**").hasAuthority(PERSONAL_UPDATE.name())
-                        .requestMatchers(DELETE, "/api/personal/**").hasAuthority(PERSONAL_DELETE.name())
+                                .requestMatchers("/api/open/**", "/api/auth/**", "/swagger-ui.html").permitAll()
+                                .requestMatchers(GET, "/api/personal/**").hasAuthority(PERSONAL_READ.getPermission())
+                                .requestMatchers(POST, "/api/personal/**").hasAuthority(PERSONAL_CREATE.getPermission())
+                                .requestMatchers(PUT, "/api/personal/**").hasAuthority(PERSONAL_UPDATE.getPermission())
+                                .requestMatchers(DELETE, "/api/personal/**").hasAuthority(PERSONAL_DELETE.getPermission())
 
-                        .requestMatchers(POST, "/api/admin/**").hasAuthority(ADMIN_CREATE.name())
-                        .requestMatchers(GET, "/api/admin/**").hasAuthority(ADMIN_READ.name())
-                        .requestMatchers(PUT, "/api/admin/**").hasAuthority(ADMIN_UPDATE.name())
-                        .requestMatchers(DELETE, "/api/admin/**").hasAuthority(ADMIN_DELETE.name())
-                        .anyRequest().authenticated()
+                                .requestMatchers(GET, "/api/admin/**").hasAuthority(ADMIN_READ.getPermission())
+                                .requestMatchers(POST, "/api/admin/**").hasAuthority(ADMIN_CREATE.getPermission())
+                                .requestMatchers(PUT, "/api/admin/**").hasAuthority(ADMIN_UPDATE.getPermission())
+                                .requestMatchers(DELETE, "/api/admin/**").hasAuthority(ADMIN_DELETE.getPermission())
+                                .anyRequest().authenticated()
                         //прописали импорт констант прямо в класс
-                ).authenticationProvider(authenticationProvider);
-
+                ).authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

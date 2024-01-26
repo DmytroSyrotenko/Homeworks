@@ -19,7 +19,7 @@ public class AuthenticationSecurityConfig {
     private final UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder()  {
         return new BCryptPasswordEncoder();
     }
 

@@ -12,15 +12,12 @@ import java.util.Set;
 @Getter
 @RequiredArgsConstructor
 public enum RoleType {
-
     PERSONAL(Set.of(
             PermissionType.PERSONAL_CREATE,
             PermissionType.PERSONAL_READ,
             PermissionType.PERSONAL_UPDATE,
             PermissionType.PERSONAL_DELETE
-
     )),
-
     ADMIN(Set.of(
             PermissionType.ADMIN_CREATE,
             PermissionType.ADMIN_READ,

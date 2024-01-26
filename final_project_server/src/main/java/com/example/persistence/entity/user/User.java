@@ -6,6 +6,7 @@ import com.example.persistence.type.RoleType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,6 +16,7 @@ import java.util.Collection;
 @Setter
 @Entity
 @Table(name = "users")
+@ToString //TODO убрать после разбора
 public class User extends BaseEntity implements UserDetails {
 
 
@@ -23,6 +25,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
     @Column(name = "first_name")
     private String firstName;
 

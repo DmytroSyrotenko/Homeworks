@@ -1,4 +1,4 @@
-package com.example.api.controller.product;
+package com.example.api.controller.open.product;
 
 import com.example.api.dto.response.product.ProductPdpDto;
 import com.example.api.dto.response.product.ProductPlpDto;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/open/products")
 @AllArgsConstructor
 public class ProductController {
 

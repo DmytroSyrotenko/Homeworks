@@ -11,4 +11,6 @@ import java.util.Optional;
 public interface UserRepository<U extends User> extends BaseRepository<U> {
 
     Optional<U> findByLogin(String login);
+
+    boolean existsByLogin(String login);
 }
