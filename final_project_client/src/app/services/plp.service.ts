@@ -9,7 +9,7 @@ import {ProductPlp} from "../models/product-plp";
 })
 export class PlpService {
 
-  private _apiUrl: string = `${httpConfig.apiUrl}/products/plp`;
+  private _apiUrl: string = `${httpConfig.apiOpenUrl}/products/plp`;
 
   constructor(private _http: HttpClient) {
   }

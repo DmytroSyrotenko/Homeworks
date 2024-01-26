@@ -9,7 +9,7 @@ import {ProductPdp} from "../models/product-pdp";
 })
 
 export class PdpService {
-  private _apiUrl: string = `${httpConfig.apiUrl}/products/pdp`;
+  private _apiUrl: string = `${httpConfig.apiOpenUrl}/products/pdp`;
 
   constructor(private _http: HttpClient) {
   }

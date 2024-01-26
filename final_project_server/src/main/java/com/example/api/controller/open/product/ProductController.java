@@ -1,4 +1,4 @@
-package com.example.controller.product;
+package com.example.api.controller.product;
 
 import com.example.api.dto.response.product.ProductPdpDto;
 import com.example.api.dto.response.product.ProductPlpDto;

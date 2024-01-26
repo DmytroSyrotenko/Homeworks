@@ -13,4 +13,5 @@ export const appConfig: ApplicationConfig = {
 
 export const httpConfig = {
   apiUrl: 'http://localhost:8080/api',
+  apiOpenUrl: 'http://localhost:8080/api/open'
 }
