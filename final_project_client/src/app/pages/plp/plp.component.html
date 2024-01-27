@@ -1,6 +1,6 @@
 <ng-container *ngIf="products$ | async as products">
   <div class="row mt-4">
-    <div class="col-6" *ngFor="let product of products">
+    <div class="col-3" *ngFor="let product of products">
       <div class="card" (click)="goToProductDetails(product.id)">
         <img src="{{ product?.image }}" class="card-img-top" alt="...">
         <div class="card-body">

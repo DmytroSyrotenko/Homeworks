@@ -5,6 +5,9 @@ import {BehaviorSubject, filter, map, Observable, of, Subscription, switchMap} f
 import {ProductPdp} from "../../models/product-pdp";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../../services/auth.service";
+import {CartService} from "../../services/cart.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 
 export interface PriceVariant {
@@ -38,13 +41,14 @@ export class PdpComponent implements OnInit, OnDestroy {
 
   readonly productPdp$: Observable<ProductPdp | undefined> = this._productPdpSubject.asObservable();
   readonly price$: Observable<PriceVariant | undefined> = this._priceSubject$.asObservable();
+  readonly isLoggedIn$: Observable<boolean> = this._authService.isLoggedIn(); //создали переменную чтобы меняять статус активности корзины
 
 
   ssdSet: Set<number> = new Set<number>();
   ramSet: Set<number> = new Set<number>();
   colorSet: Set<string> = new Set<string>();
 
-  form: FormGroup = this._fb.group({
+  formConfig: FormGroup = this._fb.group({  //реактивная форма для сбора значений
       ram: new FormControl(null, [Validators.required]),
       ssd: new FormControl(null, [Validators.required]),
       color: new FormControl(null, [Validators.required]),
@@ -54,7 +58,9 @@ export class PdpComponent implements OnInit, OnDestroy {
   constructor(
     private _router: Router,
     private _pdpService: PdpService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _authService: AuthService,
+    private _cartService: CartService
   ) {
   }
 
@@ -77,7 +83,7 @@ export class PdpComponent implements OnInit, OnDestroy {
       )
     }
     this._subscription.add(
-      this.form.valueChanges
+      this.formConfig.valueChanges
         .pipe(
           filter(value => value.ram && value.ssd && value.color),
           switchMap(value => {
@@ -117,21 +123,29 @@ export class PdpComponent implements OnInit, OnDestroy {
   }
 
   addSsd(ssd: number): void {
-    this.form.controls['ssd'].setValue(ssd);
+    this.formConfig.controls['ssd'].setValue(ssd);
   }
 
   addRam(ram: number): void {
-    this.form.controls['ram'].setValue(ram);
+    this.formConfig.controls['ram'].setValue(ram);
   }
 
   addColor(color: string): void {
-    this.form.controls['color'].setValue(color);
+    this.formConfig.controls['color'].setValue(color);
   }
 
 
   shopNow(productId: number | undefined): void {
     if (productId) {
-      console.log(productId)
+      console.log(productId);
+      this._subscription.add(
+        this._cartService.addToCart(productId)
+          .subscribe(
+          () => this._router.navigateByUrl('/cart'),
+          (error) => console.log('error', error)
+        )
+      );
+
     }
   }
 

@@ -2,7 +2,6 @@
 product:productPdp$|async ,
 priceVariant:price$|async
 } as config">
-
   <div class="card mt-4 ">
     <div class="card-header">
       {{ config.product?.name }}
@@ -47,8 +46,8 @@ priceVariant:price$|async
             <div class="col-10">
               <ng-container *ngFor="let ssd of ssdSet">
                 <button
-                  [class.btn-secondary]="ssd===form.controls['ssd'].value"
-                  [class.btn-outline-secondary]="ssd!==form.controls['ssd'].value"
+                  [class.btn-secondary]="ssd===formConfig.controls['ssd'].value"
+                  [class.btn-outline-secondary]="ssd!==formConfig.controls['ssd'].value"
                   type="button"
                   class="btn button-variant me-2"
                   (click)="addSsd(ssd)">{{ ssd }}
@@ -62,8 +61,8 @@ priceVariant:price$|async
             <div class="col-10 mt-2">
               <ng-container *ngFor="let ram of ramSet">
                 <button
-                  [class.btn-secondary]="ram===form.controls['ram'].value"
-                  [class.btn-outline-secondary]="ram!==form.controls['ram'].value"
+                  [class.btn-secondary]="ram===formConfig.controls['ram'].value"
+                  [class.btn-outline-secondary]="ram!==formConfig.controls['ram'].value"
                   type="button"
                   class="btn button-variant me-2"
                   (click)="addRam(ram)">{{ ram }}
@@ -77,8 +76,8 @@ priceVariant:price$|async
             <div class="col-10 mt-2">
               <ng-container *ngFor="let color of colorSet">
                 <button
-                  [class.btn-secondary]="color===form.controls['color'].value"
-                  [class.btn-outline-secondary]="color!==form.controls['color'].value"
+                  [class.btn-secondary]="color===formConfig.controls['color'].value"
+                  [class.btn-outline-secondary]="color!==formConfig.controls['color'].value"
                   type="button"
                   class="btn button-variant me-2"
                   (click)="addColor(color)">{{ color }}
@@ -97,8 +96,19 @@ priceVariant:price$|async
             </div>
             <div class="col-10 mt-2" *ngIf="config.priceVariant?.price">
               <button
+                *ngIf="isLoggedIn$|async"
                 type="button"
-                class="btn btn-outline-secondary button-variant me-2"(click)="shopNow(config.priceVariant?.productId)">Купити {{ config.priceVariant?.price }}
+                class="btn btn-outline-secondary button-variant me-2"
+                (click)="shopNow(config.priceVariant?.productId)">
+                Купити {{ config.priceVariant?.price }}
+              </button>
+              <button
+                *ngIf="!(isLoggedIn$|async)"
+                disabled
+                type="button"
+                class="btn btn-outline-secondary button-variant me-2"
+                (click)="shopNow(config.priceVariant?.productId)">
+                Купити {{ config.priceVariant?.price }}
               </button>
             </div>
             <div class="col-10 mt-2" *ngIf="!config.priceVariant?.price">
