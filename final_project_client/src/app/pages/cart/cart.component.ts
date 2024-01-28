@@ -40,6 +40,11 @@ export class CartComponent implements OnInit,OnDestroy{
     )
   }
 
+  createOrder():void{
+    this._cartService.createOrder();
+    this._router.navigateByUrl('/plp');
+  }
+
   ngOnDestroy(): void {
     this._subscription.unsubscribe()
   }

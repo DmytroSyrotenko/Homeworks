@@ -28,7 +28,6 @@ public class CartEntryDto extends ResponseDto {
     public CartEntryDto(CartEntry cartEntry, Product product) {
         setId(cartEntry.getId());
         this.productId = Math.toIntExact(product.getId());
-        this.quantity = cartEntry.getQuantity();
         this.color=cartEntry.getProductVariant().getProductColor().getColor();
         this.ssd= String.valueOf(cartEntry.getProductVariant().getSsd());
         this.ram= String.valueOf(cartEntry.getProductVariant().getRam());
@@ -41,6 +40,7 @@ public class CartEntryDto extends ResponseDto {
                         .get().getImageUrl();
 
         this.image = productImage;
+        this.quantity = cartEntry.getQuantity();
         this.price = cartEntry.getProductVariant().getPrice().intValueExact();
         this.name = product.getName();
         this.sum = price*quantity;

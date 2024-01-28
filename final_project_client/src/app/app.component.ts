@@ -17,21 +17,22 @@ export class AppComponent {
 //достали переменную с компонента на главный компонент и потом в хтмл
 
 
-  isLoggedIn$:Observable<boolean>  = this._authService.isLoggedIn();
+  isLoggedIn$: Observable<boolean> = this._authService.isLoggedIn();
 
-  constructor(private _authService: AuthService,private _router:Router) {
+  constructor(private _authService: AuthService, private _router: Router) {
   }
 
-  login():void{
+  login(): void {
     this._router.navigateByUrl('/login');
   }
 
-  cart(){
-    if (this._authService.isLoggedIn()){
+  cart() {
+    if (this._authService.isLoggedIn()) {
       this._router.navigateByUrl('/cart');
     }
-
-
   }
 
+  mainPage():void{
+    this._router.navigateByUrl("plp");
+  }
 }

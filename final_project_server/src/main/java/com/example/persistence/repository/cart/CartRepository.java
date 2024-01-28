@@ -9,6 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface CartRepository extends BaseRepository<Cart> {
-
     Optional<Cart> findByPersonalAndActiveTrue(Personal personal);
 }

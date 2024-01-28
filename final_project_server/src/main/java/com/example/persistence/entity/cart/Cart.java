@@ -15,9 +15,9 @@ import lombok.Setter;
 @Table(name = "cart")
 public class Cart extends BaseEntity {
 
-
     @ManyToOne
     private Personal personal;
+
 
     private Boolean active;
 

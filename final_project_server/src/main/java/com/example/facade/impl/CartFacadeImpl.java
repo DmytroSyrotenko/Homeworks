@@ -32,7 +32,7 @@ public class CartFacadeImpl implements CartFacade {
 
     @Override// TODO похоже на дубль -не обязательно етот метод в фасаде а достаточно в сервисе хотя тут перегонка в дто
     public List<CartEntryDto> getCartEntries() {
-        return cartService.getCartEntries()
+        return cartService.getActiveCartEntries()
                 .stream()
                 .map(cartEntry -> {
                     Product product = productService.findById(cartEntry.getProductVariant().getProduct().getId());
