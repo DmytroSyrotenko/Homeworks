@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {AuthService} from "./auth.service";
 import {ProductPlp} from "../models/product-plp";
 import {CartEntry} from "../models/cart-entry";
+import {Cart} from "../models/cart";
 
 @Injectable({
   providedIn: "root"
@@ -29,13 +30,22 @@ export class CartService {
     return this._http.post<string>(this._apiUrl, null, options)
   }
 
-  getAllCartEntries(): Observable<CartEntry[]> {
+  // getAllCartEntries(): Observable<CartEntry[]> {//TODO нужен ли метод
+  //   let headers = new HttpHeaders();
+  //   let token = this._authService.getToken();
+  //   headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
+  //   let options = {headers}
+  //   console.log('cart in service', null)
+  //   return this._http.get<CartEntry[]>(this._apiUrl, options)
+  // }
+
+  getCart():Observable<Cart>{
     let headers = new HttpHeaders();
     let token = this._authService.getToken();
     headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
     let options = {headers}
     console.log('cart in service', null)
-    return this._http.get<CartEntry[]>(this._apiUrl, options)
+    return this._http.get<Cart>(this._apiUrl, options)
   }
 
 }

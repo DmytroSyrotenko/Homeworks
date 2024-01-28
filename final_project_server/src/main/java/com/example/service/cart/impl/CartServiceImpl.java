@@ -6,6 +6,7 @@ import com.example.persistence.entity.product.ProductVariant;
 import com.example.persistence.entity.user.Personal;
 import com.example.persistence.repository.cart.CartEntryRepository;
 import com.example.persistence.repository.cart.CartRepository;
+import com.example.persistence.repository.product.ProductRepository;
 import com.example.persistence.repository.product.ProductVariantRepository;
 import com.example.persistence.repository.user.PersonalRepository;
 import com.example.service.cart.CartService;
@@ -27,11 +28,11 @@ public class CartServiceImpl implements CartService {
     private final CartEntryRepository cartEntryRepository;
     private final PersonalRepository personalRepository;
     private final ProductVariantRepository productVariantRepository;
+    private final ProductRepository productRepository;
 
 
     private Cart findCartOfActiveUser() {
         String userName = SecurityUtil.getUsername();
-        System.out.println("Active user Name = " + userName);
         Personal personal = personalRepository.findByLogin(userName)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
         Cart cart;
@@ -72,7 +73,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public Cart getActiveCart() {
-        return null;
+        return findCartOfActiveUser();
     }
 
     @Override

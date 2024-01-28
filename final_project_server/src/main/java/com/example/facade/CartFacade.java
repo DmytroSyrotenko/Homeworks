@@ -11,5 +11,5 @@ public interface CartFacade {
 
     void addProductVariantToCart(Long productVariantId, int quantity);
     CartDto getActiveCart();
-    List<CartEntryDto> getCartEntries();
+    List<CartEntryDto> getCartEntries();//TODO под вопросом его необходимость
 }

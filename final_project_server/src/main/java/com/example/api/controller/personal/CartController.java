@@ -20,14 +20,12 @@ public class CartController {
 
     @PostMapping
     public ResponseEntity<String> createOrUpdateCart(@RequestParam Long productVariantId, @RequestParam(defaultValue = "1") int quantity) {
-        System.out.println("корзина создана = " );
         cartFacade.addProductVariantToCart(productVariantId, quantity);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<CartEntryDto>> getActiveUserCart() {
-        System.out.println("выкачали" + cartFacade.getCartEntries());
-        return ResponseEntity.ok(cartFacade.getCartEntries());
+    public ResponseEntity<CartDto> getActiveUserCart() {
+        return ResponseEntity.ok(cartFacade.getActiveCart());
     }
 }

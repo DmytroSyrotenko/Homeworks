@@ -2,9 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Observable, Subscription} from "rxjs";
 import {Router} from "@angular/router";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {CartEntry} from "../../models/cart-entry";
 import {CartService} from "../../services/cart.service";
+import {Cart} from "../../models/cart";
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,8 @@ import {CartService} from "../../services/cart.service";
   imports: [
     AsyncPipe,
     NgForOf,
-    NgIf
+    NgIf,
+    JsonPipe
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
@@ -23,7 +25,7 @@ export class CartComponent implements OnInit,OnDestroy{
   constructor(private _authService:AuthService,private _router: Router,private _cartService:CartService) {
   }
 
-  cartEntries$:Observable<CartEntry[]>= this._cartService.getAllCartEntries();//нужно ли вносить в подписку чтобы потом отписаться
+  cart$:Observable<Cart>= this._cartService.getCart();//нужно ли вносить в подписку чтобы потом отписаться
 
 
   ngOnInit(): void {//проверка что залогинен перед действиями в карте

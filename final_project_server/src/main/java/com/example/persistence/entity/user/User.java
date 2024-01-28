@@ -19,7 +19,6 @@ import java.util.Collection;
 @ToString //TODO убрать после разбора
 public class User extends BaseEntity implements UserDetails {
 
-
     @Column(unique = true, nullable = false)
     private String login;
 
@@ -40,6 +39,7 @@ public class User extends BaseEntity implements UserDetails {
 
     @Column(name = "credentials_non_expired", nullable = false)
     private Boolean credentialsNonExpired;
+
     @Column(name = "enabled", nullable = false)
     private Boolean enabled;
 
