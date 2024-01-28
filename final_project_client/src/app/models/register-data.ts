@@ -1,6 +1,6 @@
 export interface RegisterData{
 
-  emial:string,
+  email:string,
   password:string
 
 }

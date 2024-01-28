@@ -16,6 +16,7 @@ export class AppComponent {
 
 //достали переменную с компонента на главный компонент и потом в хтмл
 
+
   isLoggedIn$:Observable<boolean>  = this._authService.isLoggedIn();
 
   constructor(private _authService: AuthService,private _router:Router) {

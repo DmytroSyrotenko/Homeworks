@@ -26,25 +26,15 @@ export class CartService {
     params = params.set('productVariantId', productVariantId);
     params = params.set('quantity', quantity);
     let options = {params, headers}
-    console.log('options', options)
     return this._http.post<string>(this._apiUrl, null, options)
   }
 
-  // getAllCartEntries(): Observable<CartEntry[]> {//TODO нужен ли метод
-  //   let headers = new HttpHeaders();
-  //   let token = this._authService.getToken();
-  //   headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
-  //   let options = {headers}
-  //   console.log('cart in service', null)
-  //   return this._http.get<CartEntry[]>(this._apiUrl, options)
-  // }
 
   getCart():Observable<Cart>{
     let headers = new HttpHeaders();
     let token = this._authService.getToken();
     headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
     let options = {headers}
-    console.log('cart in service', null)
     return this._http.get<Cart>(this._apiUrl, options)
   }
 

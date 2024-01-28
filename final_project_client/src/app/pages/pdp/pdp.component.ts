@@ -90,17 +90,9 @@ export class PdpComponent implements OnInit, OnDestroy {
             return this.productPdp$
               .pipe(
                 map(product => {
-                  console.log('form', value)
-
                   let variants = product?.variants;
-
                   if (variants) {
                     for (let i = 0; i < variants.length; i++) {
-
-                      console.log('id', variants[i].id)
-                      console.log('ssd', variants[i].ssd)
-                      console.log('ram', variants[i].ram)
-                      console.log('color', variants[i].color)
                       if (variants[i].ram === value.ram && variants[i].ssd === value.ssd && variants[i].color === value.color) {
                         this._priceSubject$.next({
                           price: variants[i].price,
@@ -137,7 +129,6 @@ export class PdpComponent implements OnInit, OnDestroy {
 
   shopNow(productId: number | undefined): void {
     if (productId) {
-      console.log(productId);
       this._subscription.add(
         this._cartService.addToCart(productId)
           .subscribe(

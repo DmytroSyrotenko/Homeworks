@@ -13,8 +13,9 @@ export class AuthService {
 
   private _isLoggedInSubject$ = new BehaviorSubject<boolean | undefined>(undefined);
   private _apiUrl: string = `${httpConfig.apiUrl}/auth`;
+  private _LoggedUserEmail$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 
-  constructor(private _http: HttpClient/* подключение хттп клиента*/) {
+  constructor(private _http: HttpClient) {
   }
 
 
@@ -23,19 +24,18 @@ export class AuthService {
   }
 
   login(data: RegisterData): Observable<AuthData> {
-    console.log('test',this._apiUrl)
     return this._http.post<AuthData>(`${this._apiUrl}/login`, data)
   }
 
-  setLoggedIn(isLoggedIn: boolean):void{
+  setLoggedIn(isLoggedIn: boolean): void {
     this._isLoggedInSubject$.next(isLoggedIn);
   }
 
-  getToken():string|null{
+  getToken(): string | null {
     let token = localStorage.getItem('token');
-    if(token){
-    let authData: AuthData = JSON.parse(token);
-    return authData.token;
+    if (token) {
+      let authData: AuthData = JSON.parse(token);
+      return authData.token;
     }
     return null;
   }

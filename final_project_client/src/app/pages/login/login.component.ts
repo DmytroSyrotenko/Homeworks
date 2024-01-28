@@ -37,14 +37,12 @@ export class LoginComponent implements OnDestroy {
       this._subscription.add(
         this._authService.login(data).subscribe(
           (auth) => {
-            console.log('auth', auth)
             localStorage.setItem('token', JSON.stringify(auth))
             this._authService.setLoggedIn(true);
             this._router.navigateByUrl('/plp')
-
+            console.log('current user',data.email)
           },
           (error) => {
-            console.log('error', error)
             this._authService.setLoggedIn(false);
             localStorage.removeItem('token')
           }
