@@ -14,5 +14,5 @@ import java.util.Optional;
 public interface CartEntryRepository extends BaseRepository<CartEntry> {
 
     List<CartEntry> findByCart(Cart cart);
-    Optional<CartEntry> findByProductVariant(ProductVariant productVariant);
+    Optional<CartEntry> findByProductVariantAndCart(ProductVariant productVariant,Cart cart);
 }

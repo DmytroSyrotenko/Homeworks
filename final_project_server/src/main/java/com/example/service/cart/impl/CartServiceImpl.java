@@ -54,8 +54,8 @@ public class CartServiceImpl implements CartService {
         ProductVariant productVariant = productVariantRepository
                 .findById(productVariantId)
                 .orElseThrow(() -> new EntityNotFoundException("Product not found"));
-        CartEntry cartEntry;
-        Optional<CartEntry> optionalCartEntry = cartEntryRepository.findByProductVariant(productVariant);
+        CartEntry cartEntry = null;
+        Optional<CartEntry> optionalCartEntry = cartEntryRepository.findByProductVariantAndCart(productVariant,cart);
         if (optionalCartEntry.isEmpty()) {
             cartEntry = new CartEntry();
             cartEntry.setCart(cart);
@@ -67,7 +67,7 @@ public class CartServiceImpl implements CartService {
             currentQuantity = currentQuantity + quantity;
             cartEntry.setQuantity(currentQuantity);
         }
-        cartEntryRepository.save(cartEntry);
+        cartEntry = cartEntryRepository.save(cartEntry);
     }
 
 
