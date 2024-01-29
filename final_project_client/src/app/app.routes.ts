@@ -35,5 +35,10 @@ export const routes: Routes = [
     pathMatch: 'prefix',
     loadChildren:() => import('./pages/register/register.routes').then(r => r.REGISTER_ROUTES)
   },
+  {
+    path: 'cabinet',
+    pathMatch: 'prefix',
+    loadChildren:() => import('./pages/cabinet/cabinet.routes').then(r => r.CABINET_ROUTES)
+  }
 
 ];

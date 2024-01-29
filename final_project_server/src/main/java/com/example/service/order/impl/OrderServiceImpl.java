@@ -2,6 +2,7 @@ package com.example.service.order.impl;
 
 import com.example.persistence.entity.cart.Cart;
 import com.example.persistence.entity.cart.CartEntry;
+import com.example.persistence.entity.order.Order;
 import com.example.persistence.entity.order.OrderEntry;
 import com.example.persistence.repository.cart.CartRepository;
 import com.example.persistence.repository.order.OrderEntryRepository;
@@ -29,16 +30,23 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void createOrderInSystem() {
         Cart cart = cartService.getActiveCart();
-
         List<CartEntry> activeCartEntries = cartService.getActiveCartEntries();
-
-
+        if(activeCartEntries.isEmpty()){
+            return;
+        }
+        Order order = new Order();
+        order.setPersonal(cart.getPersonal());
         List<OrderEntry> orderEntryList = activeCartEntries
                 .stream()
                 .map(OrderEntry::new)
+                .peek(orderEntry -> orderEntry.setOrder(order))
                 .toList();
-
-        orderEntryRepository.save(orderEntryList.get(1));
-        System.out.println("часть прошли");
+        order.setTotalPrice(
+                orderEntryList.stream().mapToInt(OrderEntry::getSum).sum()
+        );
+        orderRepository.save(order);
+        orderEntryRepository.saveAll(orderEntryList);
+        cartService.deleteCartEntries(cart);
+        cartService.deleteCart(cart);
     }
 }

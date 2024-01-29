@@ -18,7 +18,6 @@ public class Cart extends BaseEntity {
     @ManyToOne
     private Personal personal;
 
-
     private Boolean active;
 
     public Cart(){

@@ -75,4 +75,14 @@ public class CartServiceImpl implements CartService {
         Cart cart = getActiveCart();
         return cartEntryRepository.findByCart(cart);
     }
+
+    @Override
+    public void deleteCart(Cart cart) {
+        cartRepository.delete(cart);
+    }
+
+    @Override
+    public void deleteCartEntries(Cart cart) {
+        cartEntryRepository.deleteAllByCart(cart);
+    }
 }

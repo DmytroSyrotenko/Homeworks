@@ -26,14 +26,20 @@ public class OrderEntry extends BaseEntity {
     private ProductVariant productVariant;
 
     private Integer quantity;
+    private Integer price;
     private Integer sum;
     private Date date;
 
 
     public OrderEntry(CartEntry cartEntry) {
+        super();
         this.date = new Date();
-        this.sum = cartEntry.getProductVariant().getPrice().intValueExact();
-        this.quantity= cartEntry.getQuantity();
+        this.productVariant = cartEntry.getProductVariant();
+        this.price = cartEntry.getProductVariant().getPrice().intValueExact();
+        this.quantity = cartEntry.getQuantity();
+        this.sum = price * quantity;
+
 
     }
+
 }

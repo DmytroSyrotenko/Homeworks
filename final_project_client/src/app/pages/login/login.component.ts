@@ -2,7 +2,7 @@ import {Component, OnDestroy} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
-import {RegisterData} from "../../models/register-data";
+import {RegisterData} from "../../models/auth/register-data";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -40,7 +40,6 @@ export class LoginComponent implements OnDestroy {
             localStorage.setItem('token', JSON.stringify(auth))
             this._authService.setLoggedIn(true);
             this._router.navigateByUrl('/plp')
-            console.log('current user',data.email)
           },
           (error) => {
             this._authService.setLoggedIn(false);

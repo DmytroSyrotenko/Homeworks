@@ -19,7 +19,6 @@ public class CartEntry extends BaseEntity {
     private Cart cart;
     @ManyToOne
     private ProductVariant productVariant;
-
     private Integer quantity;
 
     public CartEntry(){

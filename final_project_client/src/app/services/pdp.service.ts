@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {httpConfig} from "../app.config";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProductPdp} from "../models/product-pdp";
+import {ProductPdp} from "../models/product/product-pdp";
 
 @Injectable({
   providedIn: 'root'

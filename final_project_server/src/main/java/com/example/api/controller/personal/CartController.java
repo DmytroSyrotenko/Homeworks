@@ -5,6 +5,7 @@ import com.example.api.dto.response.auth.AuthDto;
 import com.example.api.dto.response.cart.CartDto;
 import com.example.api.dto.response.cart.CartEntryDto;
 import com.example.facade.CartFacade;
+import com.example.facade.OrderFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,4 +29,5 @@ public class CartController {
     public ResponseEntity<CartDto> getActiveUserCart() {
         return ResponseEntity.ok(cartFacade.getActiveCart());
     }
+
 }

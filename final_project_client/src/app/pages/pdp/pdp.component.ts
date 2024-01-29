@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PdpService} from "../../services/pdp.service";
 import {Router} from "@angular/router";
 import {BehaviorSubject, filter, map, Observable, of, Subscription, switchMap} from "rxjs";
-import {ProductPdp} from "../../models/product-pdp";
+import {ProductPdp} from "../../models/product/product-pdp";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
@@ -136,7 +136,6 @@ export class PdpComponent implements OnInit, OnDestroy {
           (error) => console.log('error', error)
         )
       );
-
     }
   }
 

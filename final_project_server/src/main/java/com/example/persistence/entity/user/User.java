@@ -31,6 +31,12 @@ public class User extends BaseEntity implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "delivery_info")
+    private String delivery_info;
+
+    @Column(name = "balance")
+    private String balance;
+
     @Column(name = "account_non_expired", nullable = false)
     private Boolean accountNonExpired;
 

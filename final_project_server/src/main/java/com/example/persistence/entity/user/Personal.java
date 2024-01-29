@@ -8,9 +8,7 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("PERSONAL")
 public class Personal extends User {
 
-
-
-    public Personal(){
+    public Personal() {
         super();
         setRoleType(RoleType.PERSONAL);
     }

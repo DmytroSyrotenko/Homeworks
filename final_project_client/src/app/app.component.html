@@ -1,16 +1,45 @@
 <div class="container">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <button class="navbar-brand" (click)="mainPage()">Home</button>
-      <button *ngIf="isLoggedIn$|async" type="button" class="btn btn-outline-secondary button-variant me-2" (click)="cart()">Cart</button>
-      <button *ngIf="!(isLoggedIn$|async)" disabled type="button" class="btn btn-outline-secondary button-variant me-2">Cart</button>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div>
-        <span>User:</span>
+        <button type="button" class="btn btn-primary btn-lg me-1" (click)="mainPage()">Home</button>
       </div>
+
+      <div>
+        <button type="button" class="btn btn-secondary btn-sm me-1 " (click)="register()">Register</button>
+      </div>
+      <div>
+        <button *ngIf="isLoggedIn$|async" type="button"
+                class="btn btn-outline-secondary button-variant me-1"
+                (click)="cart()">Cart
+        </button>
+        <button *ngIf="!(isLoggedIn$|async)" hidden="" type="button"
+                class="btn btn-outline-secondary button-variant me-1">Cart
+        </button>
+      </div>
+
+      <div>
+        <button *ngIf="isLoggedIn$|async" type="button"
+                class="btn btn-outline-secondary button-variant me-1"
+                (click)="cabinet()">Cabinet
+        </button>
+        <button *ngIf="!(isLoggedIn$|async)" hidden="" type="button"
+                class="btn btn-outline-secondary button-variant me-1">Cabinet
+        </button>
+      </div>
+
+      <div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <div>
+        <span *ngIf="(isLoggedIn$|async)">User:</span>
+        <span *ngIf="!(isLoggedIn$|async)" hidden="">User:</span>
+      </div>
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         <form class="d-flex" role="search">
@@ -18,7 +47,8 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <button type="button" class="btn btn-primary mx-2" *ngIf="isLoggedIn$ |async">Logout</button>
-        <button type="button" class="btn btn-primary mx-2" *ngIf="!(isLoggedIn$ |async) " (click)="login()">Login</button>
+        <button type="button" class="btn btn-primary mx-2" *ngIf="!(isLoggedIn$ |async) " (click)="login()">Login
+        </button>
       </div>
     </div>
   </nav>

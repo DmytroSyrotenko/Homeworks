@@ -9,6 +9,12 @@ import java.util.List;
 public interface CartService {
 
     void addProductVariantToCart(Long productVariantId, int quantity);
-     Cart getActiveCart();
+
+    Cart getActiveCart();
+
     List<CartEntry> getActiveCartEntries();
+
+    void deleteCart(Cart cart);
+
+    void deleteCartEntries(Cart cart);
 }

@@ -15,4 +15,6 @@ public interface CartEntryRepository extends BaseRepository<CartEntry> {
 
     List<CartEntry> findByCart(Cart cart);
     Optional<CartEntry> findByProductVariantAndCart(ProductVariant productVariant,Cart cart);
+
+    void deleteAllByCart(Cart cart);
 }

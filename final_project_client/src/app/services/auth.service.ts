@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
 import {httpConfig} from "../app.config";
 import {HttpClient} from "@angular/common/http";
-import {RegisterData} from "../models/register-data";
+import {RegisterData} from "../models/auth/register-data";
 import {BehaviorSubject, map, Observable, tap} from "rxjs";
-import {AuthData} from "../models/auth-data";
+import {AuthData} from "../models/auth/auth-data";
 
 @Injectable({// аннотация бина в angular
   providedIn: "root" // чтобы был доступен везде

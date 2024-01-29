@@ -13,6 +13,8 @@ public class Admin extends User {
     public Admin() {
         super();
         setRoleType(RoleType.ADMIN);
+        setBalance("NULL");
+        setDelivery_info("NULL");
     }
 
 }

@@ -8,6 +8,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @Entity
@@ -18,8 +20,9 @@ public class Order extends BaseEntity {
     private Personal personal;
 
     private Integer totalPrice;
+    private Date date;
 
     public Order() {
-
+        this.date = new Date();
     }
 }
