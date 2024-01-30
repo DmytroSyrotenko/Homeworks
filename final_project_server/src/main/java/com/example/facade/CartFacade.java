@@ -2,6 +2,7 @@ package com.example.facade;
 
 import com.example.api.dto.response.cart.CartDto;
 import com.example.api.dto.response.cart.CartEntryDto;
+import com.example.api.dto.response.cart.OrderDto;
 import com.example.persistence.entity.cart.Cart;
 import com.example.persistence.entity.cart.CartEntry;
 
@@ -11,5 +12,6 @@ public interface CartFacade {
 
     void addProductVariantToCart(Long productVariantId, int quantity);
     CartDto getActiveCart();
-    List<CartEntryDto> getCartEntries();//TODO под вопросом его необходимость
+    List<CartEntryDto> getCartEntries();
+    List<OrderDto> getUserOrders();
 }

@@ -42,7 +42,6 @@ public class AuthenticationService {
         token.setUser(personal);
         tokenRepository.save(token);
         return new AuthDto(jwtToken);
-
     }
     // вход в систему как персонала так и админа-уже с юзером  потому что могут работать и те и те
     public AuthDto login(RegisterDto dto) {
