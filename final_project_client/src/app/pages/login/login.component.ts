@@ -27,27 +27,33 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private _fb: FormBuilder,
-    private _authService: LoginService,
-    private _router:Router) {
+    private _loginService: LoginService,
+    private _router: Router) {
   }
 
   login(): void {
     if (this.formLogin.valid) {
       let data: RegisterData = {...this.formLogin.value}// перелив пересекающихся полей
       this._subscription.add(
-        this._authService.login(data).subscribe(
+        this._loginService.login(data).subscribe(
           (auth) => {
             localStorage.setItem('token', JSON.stringify(auth))
-            this._authService.setLoggedIn(true);
-            this._router.navigateByUrl('/plp')
+            this._loginService.setLoggedIn(true);
+            this._router.navigateByUrl('/plp').then(() => {
+              window.location.reload();
+            })
           },
           (error) => {
-            this._authService.setLoggedIn(false);
+            this._loginService.setLoggedIn(false);
             localStorage.removeItem('token')
           }
         )
       )
     }
+  }
+
+  createAccount(): void {
+    this._router.navigateByUrl('/register')
   }
 
   ngOnDestroy(): void {

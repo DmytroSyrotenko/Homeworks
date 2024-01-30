@@ -6,9 +6,6 @@
       </div>
 
       <div>
-        <button type="button" class="btn btn-secondary btn-sm me-1 " (click)="register()">Register</button>
-      </div>
-      <div>
         <button *ngIf="isLoggedIn$|async" type="button"
                 class="btn btn-outline-secondary button-variant me-1"
                 (click)="cart()">Cart
@@ -34,12 +31,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-
-      <div>
-        <span *ngIf="(isLoggedIn$|async)">User:</span>
-        <span *ngIf="!(isLoggedIn$|async)" hidden="">User:</span>
-      </div>
-
+      <ng-container *ngIf="userInfo$ | async as userInfo">
+        <div>
+          <span *ngIf="(isLoggedIn$|async)">User: {{ userInfo?.email}}</span>
+          <span *ngIf="!(isLoggedIn$|async)" hidden="">User:</span>
+        </div>
+      </ng-container>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
         <form class="d-flex" role="search">

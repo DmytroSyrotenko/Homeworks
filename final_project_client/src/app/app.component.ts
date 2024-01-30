@@ -3,6 +3,8 @@ import {Router, RouterLink, RouterOutlet} from '@angular/router';
 import {LoginService} from "./services/login.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {Observable} from "rxjs";
+import {UserInfo} from "./models/cabinet/user-info";
+import {CabinetService} from "./services/cabinet.service";
 
 @Component({
   selector: 'app-root',
@@ -15,9 +17,11 @@ export class AppComponent {
   title = 'final_project_client';
 
 //достали переменную с компонента на главный компонент и потом в хтмл
-  isLoggedIn$: Observable<boolean> = this._authService.isLoggedIn();
+  isLoggedIn$: Observable<boolean> = this._loginService.isLoggedIn();
 
-  constructor(private _authService: LoginService, private _router: Router) {
+  userInfo$: Observable<UserInfo> = this._cabinetService.getUserInfo();
+
+  constructor(private _loginService: LoginService, private _router: Router, private _cabinetService: CabinetService) {
   }
 
   login(): void {
@@ -33,18 +37,17 @@ export class AppComponent {
   }
 
   cart() {
-    if (this._authService.isLoggedIn()) {
+    if (this._loginService.isLoggedIn()) {
       this._router.navigateByUrl('/cart');
     }
   }
 
-  cabinet(){
+  cabinet() {
     this._router.navigateByUrl('/cabinet')
   }
 
-  mainPage():void{
+  mainPage(): void {
     this._router.navigateByUrl("plp");
   }
-
 
 }
