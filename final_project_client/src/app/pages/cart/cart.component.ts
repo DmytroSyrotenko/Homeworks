@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from "../../services/auth.service";
+import {LoginService} from "../../services/login.service";
 import {Observable, Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
@@ -23,7 +23,7 @@ export class CartComponent implements OnInit,OnDestroy{
 
   private _subscription= new Subscription();
   constructor(
-    private _authService:AuthService,
+    private _authService:LoginService,
     private _router: Router,
     private _cartService:CartService
   ) {

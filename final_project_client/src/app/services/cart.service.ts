@@ -2,7 +2,7 @@ import {httpConfig} from "../app.config";
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {AuthService} from "./auth.service";
+import {LoginService} from "./login.service";
 import {Cart} from "../models/cart/cart";
 
 @Injectable({
@@ -15,7 +15,7 @@ export class CartService {
 
   constructor(
     private _http: HttpClient,
-    private _authService: AuthService
+    private _authService: LoginService
   ) {
   }
 

@@ -9,11 +9,10 @@ import {AuthData} from "../models/auth/auth-data";
   providedIn: "root" // чтобы был доступен везде
 })
 
-export class AuthService {
+export class LoginService {
 
   private _isLoggedInSubject$ = new BehaviorSubject<boolean | undefined>(undefined);
   private _apiUrl: string = `${httpConfig.apiUrl}/auth`;
-  private _LoggedUserEmail$: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 
   constructor(private _http: HttpClient) {
   }

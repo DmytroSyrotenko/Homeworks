@@ -5,7 +5,7 @@ import {BehaviorSubject, filter, map, Observable, of, Subscription, switchMap} f
 import {ProductPdp} from "../../models/product/product-pdp";
 import {AsyncPipe, JsonPipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import {LoginService} from "../../services/login.service";
 import {CartService} from "../../services/cart.service";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 
@@ -59,7 +59,7 @@ export class PdpComponent implements OnInit, OnDestroy {
     private _router: Router,
     private _pdpService: PdpService,
     private _fb: FormBuilder,
-    private _authService: AuthService,
+    private _authService: LoginService,
     private _cartService: CartService
   ) {
   }

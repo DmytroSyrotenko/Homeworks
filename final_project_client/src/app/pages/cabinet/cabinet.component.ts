@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
-import {AuthService} from "../../services/auth.service";
+import {LoginService} from "../../services/login.service";
 import {Router} from "@angular/router";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -50,7 +50,7 @@ export class CabinetComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private _authService: AuthService,
+    private _authService: LoginService,
     private _router: Router,
     private _cabinetService: CabinetService,
     private _fb: FormBuilder

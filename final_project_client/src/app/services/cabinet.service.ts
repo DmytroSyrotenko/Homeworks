@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {AuthService} from "./auth.service";
+import {LoginService} from "./login.service";
 import {httpConfig} from "../app.config";
 import {UserInfo} from "../models/cabinet/user-info";
 
@@ -15,7 +15,7 @@ export class CabinetService {
   private _apiUrl: string = `${httpConfig.apiPersonalUrl}/cabinet`;
 
   constructor(
-    private _authService: AuthService,
+    private _authService: LoginService,
     private _http: HttpClient
   ) {
   }

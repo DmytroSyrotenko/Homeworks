@@ -1,7 +1,7 @@
 import {Component, OnDestroy} from '@angular/core';
 import {NgIf} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import {LoginService} from "../../services/login.service";
 import {RegisterData} from "../../models/auth/register-data";
 import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
@@ -27,7 +27,7 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private _fb: FormBuilder,
-    private _authService: AuthService,
+    private _authService: LoginService,
     private _router:Router) {
   }
 
