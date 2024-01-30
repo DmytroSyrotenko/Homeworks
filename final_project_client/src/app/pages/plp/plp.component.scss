@@ -1,3 +1,9 @@
 .card:hover{
   cursor:pointer;
 }
+
+.parent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

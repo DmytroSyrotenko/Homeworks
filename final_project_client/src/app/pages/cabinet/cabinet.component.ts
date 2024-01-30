@@ -1,12 +1,15 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {LoginService} from "../../services/login.service";
 import {Router} from "@angular/router";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Observable, Subscription} from "rxjs";
 
 import {CabinetService} from "../../services/cabinet.service";
 import {UserInfo} from "../../models/cabinet/user-info";
+import {ProductPlp} from "../../models/product/product-plp";
+import {OrderInfo} from "../../models/cabinet/order-info";
+import {CartService} from "../../services/cart.service";
 
 
 @Component({
@@ -16,7 +19,8 @@ import {UserInfo} from "../../models/cabinet/user-info";
     NgIf,
     ReactiveFormsModule,
     AsyncPipe,
-    NgForOf
+    NgForOf,
+    JsonPipe
   ],
   templateUrl: './cabinet.component.html',
   styleUrl: './cabinet.component.scss'
@@ -25,6 +29,7 @@ export class CabinetComponent implements OnInit, OnDestroy {
   private _subscription = new Subscription();
 
   userInfo$: Observable<UserInfo> = this._cabinetService.getUserInfo();
+  ordersInfo$: Observable<OrderInfo[]> = this._cartService.getUserOrders();
 
 
   formUserUpdate: FormGroup = this._fb.group({  //реактивная форма для сбора значений
@@ -41,9 +46,9 @@ export class CabinetComponent implements OnInit, OnDestroy {
       this.formUserUpdate.patchValue({
         firstName: i.firstName,
         lastName: i.lastName,
-        email:i.email,
-        deliveryInfo:i.deliveryInfo,
-        balance:i.balance
+        email: i.email,
+        deliveryInfo: i.deliveryInfo,
+        balance: i.balance
       })
     });
   }
@@ -53,7 +58,8 @@ export class CabinetComponent implements OnInit, OnDestroy {
     private _authService: LoginService,
     private _router: Router,
     private _cabinetService: CabinetService,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _cartService: CartService
   ) {
   }
 

@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {LoginService} from "./login.service";
 import {Cart} from "../models/cart/cart";
+import {OrderInfo} from "../models/cabinet/order-info";
 
 @Injectable({
   providedIn: "root"
@@ -46,6 +47,14 @@ export class CartService {
     headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
     let options = {headers}
     return this._http.post<string>(this._apiUrlOnlyForOrder, null, options);
+  }
+
+  getUserOrders(): Observable<OrderInfo[]>{
+    let headers = new HttpHeaders();
+    let token = this._authService.getToken();
+    headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
+    let options = {headers};
+    return this._http.get<OrderInfo[]>(this._apiUrlOnlyForOrder, options)
   }
 
 }
