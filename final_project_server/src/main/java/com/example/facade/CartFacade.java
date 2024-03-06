@@ -3,8 +3,6 @@ package com.example.facade;
 import com.example.api.dto.response.cart.CartDto;
 import com.example.api.dto.response.cart.CartEntryDto;
 import com.example.api.dto.response.cart.OrderDto;
-import com.example.persistence.entity.cart.Cart;
-import com.example.persistence.entity.cart.CartEntry;
 
 import java.util.List;
 

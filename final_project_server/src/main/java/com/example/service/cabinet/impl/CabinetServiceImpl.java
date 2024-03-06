@@ -1,11 +1,8 @@
 package com.example.service.cabinet.impl;
 
 import com.example.api.dto.request.cabinet.UpdateUserFromFrontDto;
-import com.example.persistence.entity.cart.Cart;
 import com.example.persistence.entity.user.Personal;
-import com.example.persistence.entity.user.User;
 import com.example.persistence.repository.user.PersonalRepository;
-import com.example.persistence.repository.user.UserRepository;
 import com.example.service.cabinet.CabinetService;
 import com.example.util.SecurityUtil;
 import jakarta.persistence.EntityNotFoundException;

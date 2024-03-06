@@ -1,105 +1,88 @@
-<div>
-  <div class="container px-3 my-5 clearfix">
-    <!-- Shopping cart table -->
-    <div class="card">
-      <div class="card-header">
-        <h2>Cabinet</h2>
-      </div>
+<div class="container px-3 my-5 clearfix">
+  <!-- Cabinet card -->
+  <div class="card">
+    <div class="card-header">
+      <h2>Cabinet</h2>
+    </div>
 
-      <ng-container *ngIf="userInfo$ | async as userInfo">
-        <div class="card-body">
-          <div class="table-responsive">
-            <div class="card-header mt-1">
-              <h4>Personal info</h4>
-            </div>
-            <table class="table table-bordered m-0">
+    <!-- Personal info -->
+    <ng-container *ngIf="userInfo$ | async as userInfo">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <h4>Personal Info</h4>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
               <thead>
               <tr>
-                <th class="text-center py-3 px-4" style="min-width: 100px;">First name</th>
-                <th class="text-center py-3 px-4" style="min-width: 100px;">Last name</th>
-                <th class="text-center py-3 px-4" style="min-width: 100px;">Email</th>
-                <th class="text-right py-3 px-4" style="width: 150px;">Delivery info</th>
-                <th class="text-center py-3 px-4" style="width: 120px;">Balance</th>
+                <th style="min-width: 100px;">First Name</th>
+                <th style="min-width: 100px;">Last Name</th>
+                <th style="min-width: 100px;">Email</th>
+                <th style="width: 150px;">Delivery Info</th>
+                <th style="width: 120px;">Balance</th>
               </tr>
               </thead>
               <tbody>
               <tr [formGroup]="formUserUpdate">
-                <td class="text-right font-weight-semibold align-middle p-4">
-                  <input type="text"
-                         class="form-control text-center"
-                         value="{{ userInfo?.firstName }}"
-                         formControlName="firstName">
+                <td>
+                  <input type="text" class="form-control" value="{{ userInfo?.firstName }}" formControlName="firstName">
                 </td>
-                <td class="text-right font-weight-semibold align-middle p-4">
-                  <input type="text"
-                         class="form-control text-center"
-                         value="{{ userInfo?.lastName }}"
-                         formControlName="lastName">
+                <td>
+                  <input type="text" class="form-control" value="{{ userInfo?.lastName }}" formControlName="lastName">
                 </td>
-                <td class="text-right font-weight-semibold align-middle p-4">
-                  <input type="text"
-                         class="form-control text-center"
-                         value="{{ userInfo?.email }}"
-                         formControlName="email">
+                <td>
+                  <input type="text" class="form-control" value="{{ userInfo?.email }}" formControlName="email">
                 </td>
-                <td class="text-right font-weight-semibold align-middle p-4">
-                  <input type="text"
-                         class="form-control text-center"
-                         value="{{ userInfo?.deliveryInfo }}"
-                         formControlName="deliveryInfo">
+                <td>
+                  <input type="text" class="form-control" value="{{ userInfo?.deliveryInfo }}" formControlName="deliveryInfo">
                 </td>
-                <td class="text-right font-weight-semibold align-middle p-4">
-                  <input type="text"
-                         class="form-control text-center"
-                         value="{{ userInfo?.balance }}"
-                         formControlName="balance">
+                <td>
+                  <input type="text" class="form-control" value="{{ userInfo?.balance }}" formControlName="balance">
                 </td>
               </tr>
               </tbody>
             </table>
 
-            <div class="button mt-4">
+            <!-- Update button -->
+            <div class="button mt-4 text-end">
               <button type="submit" class="btn btn-primary" (click)="updateUserData()" *ngIf="formUserUpdate.valid">
-                Update info
+                Update Info
               </button>
-              <button type="submit" class="btn btn-primary" disabled *ngIf="!formUserUpdate.valid">Update info
-              </button>
+              <button type="submit" class="btn btn-primary" disabled *ngIf="!formUserUpdate.valid">Update Info</button>
             </div>
           </div>
-          <!-- / Shopping cart table -->
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="ordersInfo$ | async as orders">
-      <div class="card-body">
-        <div class="table-responsive">
-          <div class="card-header mt-1">
-            <h4>Orders</h4>
-          </div>
-          <table class="table table-bordered m-0">
-            <thead>
-            <tr>
-              <th class="text-center py-3 px-4" style="min-width: 100px;">Order ID</th>
-              <th class="text-center py-3 px-4" style="min-width: 100px;">Date</th>
-              <th class="text-center py-3 px-4" style="min-width: 100px;">Total sum</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let order of orders ">
-              <td class="text-right font-weight-semibold align-middle p-4">{{ order.id }}</td>
-              <td class="text-right font-weight-semibold align-middle p-4">{{ order.date }}</td>
-              <td class="text-right font-weight-semibold align-middle p-4">{{ order.totalOrderSum }}</td>
-            </tr>
-            </tbody>
-          </table>
-
         </div>
       </div>
-      </ng-container>
-    </div>
-    <div>
-    </div>
+    </ng-container>
+
+    <!-- Orders info -->
+    <ng-container *ngIf="ordersInfo$ | async as orders">
+      <div class="card-body">
+        <div class="card">
+          <div class="card-header">
+            <h4>Orders</h4>
+          </div>
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th style="min-width: 100px;">Order ID</th>
+                <th style="min-width: 100px;">Date</th>
+                <th style="min-width: 100px;">Total Sum, UAH</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let order of orders">
+                <td>{{ order.id }}</td>
+                <td>{{ order.date }}</td>
+                <td>{{ order.totalOrderSum }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
-

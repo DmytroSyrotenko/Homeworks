@@ -5,7 +5,6 @@ import com.example.persistence.entity.cart.CartEntry;
 import com.example.persistence.entity.order.Order;
 import com.example.persistence.entity.order.OrderEntry;
 import com.example.persistence.entity.user.Personal;
-import com.example.persistence.repository.cart.CartRepository;
 import com.example.persistence.repository.order.OrderEntryRepository;
 import com.example.persistence.repository.order.OrderRepository;
 import com.example.persistence.repository.user.PersonalRepository;

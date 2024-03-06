@@ -3,7 +3,6 @@ package com.example.persistence.entity.cart;
 import com.example.persistence.entity.BaseEntity;
 import com.example.persistence.entity.product.ProductVariant;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;

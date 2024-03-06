@@ -2,12 +2,10 @@ package com.example.api.dto.response.cart;
 
 import com.example.api.dto.response.ResponseDto;
 import com.example.persistence.entity.cart.Cart;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
-import java.util.Optional;
 
 @Getter
 @Setter

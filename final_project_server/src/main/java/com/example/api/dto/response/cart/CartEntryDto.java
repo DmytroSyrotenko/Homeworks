@@ -1,14 +1,11 @@
 package com.example.api.dto.response.cart;
 
 import com.example.api.dto.response.ResponseDto;
-import com.example.exceptions.NotValidFieldDataException;
 import com.example.persistence.entity.cart.CartEntry;
 import com.example.persistence.entity.product.Product;
 import com.example.persistence.entity.product.ProductImage;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.math.BigDecimal;
 
 
 @Getter

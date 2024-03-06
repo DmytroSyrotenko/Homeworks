@@ -1,53 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="app.component.scss">
+</head>
+<body>
+
 <div class="container">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <div>
-        <button type="button" class="btn btn-primary btn-lg me-1" (click)="mainPage()">Home</button>
-      </div>
-
-      <div>
-        <button *ngIf="isLoggedIn$|async" type="button"
-                class="btn btn-outline-secondary button-variant me-1"
-                (click)="cart()">Cart
-        </button>
-        <button *ngIf="!(isLoggedIn$|async)" hidden="" type="button"
-                class="btn btn-outline-secondary button-variant me-1">Cart
-        </button>
-      </div>
-
-      <div>
-        <button *ngIf="isLoggedIn$|async" type="button"
-                class="btn btn-outline-secondary button-variant me-1"
-                (click)="cabinet()">Cabinet
-        </button>
-        <button *ngIf="!(isLoggedIn$|async)" hidden="" type="button"
-                class="btn btn-outline-secondary button-variant me-1">Cabinet
-        </button>
-      </div>
-
-      <div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <ng-container *ngIf="userInfo$ | async as userInfo">
-        <div>
-          <span *ngIf="(isLoggedIn$|async)">User: {{ userInfo?.email}}</span>
-          <span *ngIf="!(isLoggedIn$|async)" hidden="">User:</span>
-        </div>
-      </ng-container>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <a type="button" href="#" class="btn btn-success">Home</a>
+      <div class="d-flex justify-content-center align-items-center flex-grow-1">
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-        <button type="button" class="btn btn-primary mx-2" *ngIf="isLoggedIn$ |async" (click)="logout()">Logout</button>
-        <button type="button" class="btn btn-primary mx-2" *ngIf="!(isLoggedIn$ |async) " (click)="login()">Login
-        </button>
+      </div>
+
+      <div class="d-flex">
+        <button *ngIf="isLoggedIn$ | async" type="button" class="btn btn-secondary me-2" (click)="cart()">Cart</button>
+        <button *ngIf="isLoggedIn$ | async" type="button" class="btn btn-secondary me-2" (click)="cabinet()">Cabinet</button>
+        <button *ngIf="isLoggedIn$ | async" type="button" class="btn btn-primary mx-2" (click)="logout()">Logout</button>
+        <button *ngIf="!(isLoggedIn$ | async)" type="button" class="btn btn-primary mx-2" (click)="login()">Login</button>
       </div>
     </div>
   </nav>
   <router-outlet></router-outlet>
 </div>
+</body>
+</html>

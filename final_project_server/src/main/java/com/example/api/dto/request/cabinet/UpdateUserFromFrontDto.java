@@ -6,7 +6,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString //TODO kill
 public class UpdateUserFromFrontDto {
 
     private String firstName;

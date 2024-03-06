@@ -41,6 +41,7 @@ export class CabinetComponent implements OnInit, OnDestroy {
     }
   )
 
+
   private updateFormValues(): void {
     let temp = this.userInfo$.forEach(i => {
       this.formUserUpdate.patchValue({

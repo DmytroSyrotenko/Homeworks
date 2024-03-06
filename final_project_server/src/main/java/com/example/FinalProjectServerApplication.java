@@ -2,15 +2,12 @@ package com.example;
 
 
 import com.example.persistence.repository.user.PersonalRepository;
-import com.example.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class FinalProjectServerApplication {
@@ -26,14 +23,11 @@ public class FinalProjectServerApplication {
         SpringApplication.run(FinalProjectServerApplication.class, args);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    /*TODO убрать после експериментов*/
-    public void run() {
-
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void run() {
 //        Personal personal = new Personal();
 //        personal.setLogin("login2@mail.com");
-//
 //        personal.setPassword(passwordEncoder.encode("password"));
 //        personalRepository.save(personal);
-    }
+//    }
 }

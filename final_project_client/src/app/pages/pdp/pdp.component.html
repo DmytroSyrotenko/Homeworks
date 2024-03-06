@@ -1,38 +1,41 @@
 <ng-container *ngIf="{
-product:productPdp$|async ,
-priceVariant:price$|async
+  product: productPdp$ | async,
+  priceVariant: price$ | async
 } as config">
-  <div class="card mt-4 ">
+  <div class="card mt-4 bold-text">
     <div class="card-header">
       {{ config.product?.name }}
     </div>
     <div class="body">
-      <div class="d-flex justify-content around">
+      <div class="d-flex justify-content-center mb-4">
         <div *ngFor="let image of config.product?.images">
-          <img src="{{image}}" width="90" height="150">
+          <img src="{{ image }}" class="img-thumbnail m-2" style="width: 150px; height: 250px;">
         </div>
       </div>
-      <div class="d-flex">
+      <div class="d-flex bold-text">
         <span>{{ config.product?.description }}</span>
       </div>
+      ---------------------------------------------------
       <div class="d-flex-column">
         <div>
-          <span class="fs-5 me-4">Display resolution</span>
+          <span class="fs-5 me-4 bold-text">Display resolution</span>
           <span>{{ config.product?.displayResolution }}</span>
         </div>
         <div>
-          <span class="fs-5 me-4"> Camera</span>
+          <span class="fs-5 me-4 bold-text"> Camera</span>
           <span>{{ config.product?.camera }}</span>
         </div>
         <div>
-          <span class="fs-5 me-4">Battery</span>
+          <span class="fs-5 me-4 bold-text">Battery</span>
           <span>{{ config.product?.battery }}</span>
         </div>
         <div>
-          <span class="fs-5 me-4">Processor</span>
+          <span class="fs-5 me-4 bold-text">Processor</span>
           <span>{{ config.product?.cpu }}</span>
         </div>
       </div>
+
+      ---------------------------------------------------
       <div class="d-flex mt-4 mb-4">
         Configuration
       </div>
@@ -108,7 +111,7 @@ priceVariant:price$|async
                 type="button"
                 class="btn btn-outline-secondary button-variant me-2"
                 (click)="shopNow(config.priceVariant?.productId)">
-                Купити {{ config.priceVariant?.price }}
+                Add to cart {{ config.priceVariant?.price }}
               </button>
             </div>
             <div class="col-10 mt-2" *ngIf="!config.priceVariant?.price">
@@ -120,5 +123,3 @@ priceVariant:price$|async
     </div>
   </div>
 </ng-container>
-
-

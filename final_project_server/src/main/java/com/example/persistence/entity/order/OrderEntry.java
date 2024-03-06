@@ -1,10 +1,8 @@
 package com.example.persistence.entity.order;
 
 import com.example.persistence.entity.BaseEntity;
-import com.example.persistence.entity.cart.Cart;
 import com.example.persistence.entity.cart.CartEntry;
 import com.example.persistence.entity.product.ProductVariant;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -38,8 +36,6 @@ public class OrderEntry extends BaseEntity {
         this.price = cartEntry.getProductVariant().getPrice().intValueExact();
         this.quantity = cartEntry.getQuantity();
         this.sum = price * quantity;
-
-
     }
 
 }

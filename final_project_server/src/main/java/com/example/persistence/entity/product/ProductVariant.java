@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@ToString  //TODO убрать
 @Table(name = "product_variants")
 public class ProductVariant extends BaseEntity implements Comparable<ProductVariant> {
 

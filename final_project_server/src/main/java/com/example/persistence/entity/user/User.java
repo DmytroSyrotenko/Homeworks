@@ -1,7 +1,6 @@
 package com.example.persistence.entity.user;
 
 import com.example.persistence.entity.BaseEntity;
-import com.example.persistence.repository.user.UserRepository;
 import com.example.persistence.type.RoleType;
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
   <div class="p-1 mt-4 w-75">
-    <form [formGroup]="formLogin" >
+    <form [formGroup]="formLogin">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
@@ -9,15 +9,14 @@
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
       </div>
-      <div class="d-flex flex-row align-items-center justify-content-between">
-      <button type="submit" class="btn btn-primary" (click)="login()" *ngIf="formLogin.valid">Submit</button>
-      <button type="submit" class="btn btn-primary" disabled *ngIf="!formLogin.valid">Submit</button>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary me-2" (click)="login()" [disabled]="!formLogin.valid">Submit</button>
+        <!-- Додаємо властивість [disabled] для кнопки, яка автоматично визначає, чи вірна форма -->
       </div>
     </form>
 
-    <div class="d-flex flex-row align-items-center justify-content-between ">
-      <a></a>
-      <button class="btn btn-primary "(click)="createAccount()">New user</button>
+    <div class="d-flex justify-content-between mt-3">
+      <button class="btn btn-primary" (click)="createAccount()">New user</button>
     </div>
 
   </div>

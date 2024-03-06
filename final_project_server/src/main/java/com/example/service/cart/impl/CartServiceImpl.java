@@ -6,7 +6,6 @@ import com.example.persistence.entity.product.ProductVariant;
 import com.example.persistence.entity.user.Personal;
 import com.example.persistence.repository.cart.CartEntryRepository;
 import com.example.persistence.repository.cart.CartRepository;
-import com.example.persistence.repository.product.ProductRepository;
 import com.example.persistence.repository.product.ProductVariantRepository;
 import com.example.persistence.repository.user.PersonalRepository;
 import com.example.service.cart.CartService;

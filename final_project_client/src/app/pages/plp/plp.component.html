@@ -1,15 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="plp.component.scss">
+</head>
+<body>
+
 <ng-container *ngIf="products$ | async as products">
   <div class="row mt-4">
-    <div class="col-5" *ngFor="let product of products">
-      <div class="card" (click)="goToProductDetails(product.id)">
-        <img src="{{ product?.image }}" class="card-img-top" >
-        <div class="card-body">
+    <div class="col-4" *ngFor="let product of products">
+      <div class="card mb-4 h-100" (click)="goToProductDetails(product.id)">
+        <img src="{{ product?.image }}" class="card-img-top" alt="{{ product?.name }}">
+        <div class="card-body justify-content">
           <h5 class="card-title">{{ product?.name }}</h5>
           <p class="card-text">{{ product?.description }}</p>
-          <h6 class="card-text">From {{ product?.minPrice }} UAH to {{ product?.maxPrice }} UAH</h6>
-          <button (click)="goToProductDetails(product.id)" class="btn btn-primary">Bye</button>
+          <h6 class="card-text">Price: {{ product?.minPrice }} - {{ product?.maxPrice }} UAH</h6>
+          <button (click)="goToProductDetails(product.id)" class="btn btn-primary">Buy</button>
         </div>
       </div>
     </div>
   </div>
 </ng-container>
+
+</body>
+</html>
+

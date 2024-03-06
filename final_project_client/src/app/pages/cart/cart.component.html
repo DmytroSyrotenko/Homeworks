@@ -7,56 +7,52 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered m-0">
+          <table class="table table-bordered">
             <thead>
             <tr>
-              <!-- Set columns width -->
-              <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
-              <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
-              <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
-              <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
-
+              <th scope="col" style="min-width: 400px;">Product Name &amp; Details</th>
+              <th scope="col" class="text-right" style="width: 100px;">Price</th>
+              <th scope="col" class="text-center" style="width: 120px;">Quantity</th>
+              <th scope="col" class="text-right" style="width: 100px;">Total</th>
             </tr>
             </thead>
             <tbody>
-
             <tr *ngFor="let entry of cart?.entries ">
               <td class="p-4">
                 <div class="media align-items-center">
-                  <img src="{{entry?.image}}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                  <img src="{{ entry?.image }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                   <div class="media-body">
-                    <a href="/pdp/{{entry?.productId}}" class="d-block text-dark">{{ entry?.name }}/{{ entry?.color }}
-                      /{{ entry?.ssd }}/{{ entry?.ram }}</a>
+                    <a href="/pdp/{{ entry?.productId }}" class="d-block text-dark">
+                      {{ entry?.name }}/{{ entry?.color }}/{{ entry?.ssd }}/{{ entry?.ram }}
+                    </a>
                   </div>
                 </div>
               </td>
               <td class="text-right font-weight-semibold align-middle p-4">{{ entry?.price }}</td>
-              <td class="text-right font-weight-semibold align-middle p-4">{{ entry.quantity }}</td>
+              <td class="text-center font-weight-semibold align-middle p-4">{{ entry.quantity }}</td>
               <td class="text-right font-weight-semibold align-middle p-4">{{ entry.sum }}</td>
             </tr>
             </tbody>
           </table>
         </div>
-        <!-- / Shopping cart table -->
 
-        <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
-          <div class="mt-4">
-            <!--          не удалять етот див оптому что слезет вправо-->
-          </div>
-          <div class="d-flex">
-            <div class="text-right mt-4">
-              <label class="text-muted font-weight-normal m-0">Total price</label>
-              <div class="text-large"><strong>{{ cart.totalPrice }} UAH</strong></div>
-            </div>
+        <!-- Total price section -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+          <div></div>
+          <div class="text-right">
+            <label class="text-muted font-weight-normal m-0">Total price</label>
+            <div class="text-large"><strong>{{ cart.totalPrice }} UAH</strong></div>
           </div>
         </div>
 
-        <div class="float-right">
-          <button type="button" class="btn btn-lg btn-primary mt-2 " (click)="createOrder()">Order!</button>
+        <!-- Order button (moved to the right) -->
+        <div class="d-flex justify-content-between mt-4">
+          <div></div>
+          <div class="text-right">
+            <button type="button" class="btn btn-lg btn-primary" (click)="createOrder()">Order Now!</button>
+          </div>
         </div>
-
       </div>
     </div>
   </div>
 </ng-container>
-

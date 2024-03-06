@@ -4,7 +4,6 @@ import com.example.api.dto.response.cart.CartDto;
 import com.example.api.dto.response.cart.CartEntryDto;
 import com.example.api.dto.response.cart.OrderDto;
 import com.example.facade.CartFacade;
-import com.example.persistence.entity.cart.Cart;
 import com.example.persistence.entity.product.Product;
 import com.example.service.cart.CartService;
 import com.example.service.order.OrderService;
@@ -12,7 +11,6 @@ import com.example.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

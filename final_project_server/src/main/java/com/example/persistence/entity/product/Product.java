@@ -13,7 +13,6 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@ToString  //TODO убрать
 @Table(name = "products")
 public class Product extends BaseEntity {
 
