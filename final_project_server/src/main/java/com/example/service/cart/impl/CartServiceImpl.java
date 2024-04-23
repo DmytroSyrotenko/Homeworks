@@ -48,7 +48,12 @@ public class CartServiceImpl implements CartService {
             currentQuantity = currentQuantity + quantity;
             cartEntry.setQuantity(currentQuantity);
         }
-        cartEntry = cartEntryRepository.save(cartEntry);
+        cartEntryRepository.save(cartEntry);
+    }
+
+    @Override
+    public void deleteProductVariantFromCart(Long productVariantId) {
+        cartEntryRepository.deleteById(productVariantId);
     }
 
 

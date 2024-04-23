@@ -15,9 +15,7 @@ public class CartController {
     private final CartFacade cartFacade;
 
     @PostMapping
-    public ResponseEntity<String> createOrUpdateCart(@RequestParam Long productVariantId, @RequestParam(defaultValue = "1") int quantity) {
-        System.out.println("added to cart");
-
+    public ResponseEntity<String> createNewOrAddProductVariantToCart(@RequestParam Long productVariantId, @RequestParam(defaultValue = "1") int quantity) {
         cartFacade.addProductVariantToCart(productVariantId, quantity);
         return ResponseEntity.ok().build();
     }
@@ -26,5 +24,14 @@ public class CartController {
     public ResponseEntity<CartDto> getActiveUserCart() {
         return ResponseEntity.ok(cartFacade.getActiveCart());
     }
+
+
+    @DeleteMapping
+    public ResponseEntity<String> deleteSkuFromCart(@RequestParam Long productVariantId) {
+        System.out.println("deleting"+ productVariantId);
+        cartFacade.deleteProductVariantFromCart(productVariantId);
+        return ResponseEntity.ok().build();
+    }
+
 
 }

@@ -55,7 +55,6 @@ public class AuthenticationService {
         token.setUser(user);
         tokenRepository.save(token);
         return new AuthDto(jwtToken);
-
     }
 
 }

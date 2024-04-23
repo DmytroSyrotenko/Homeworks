@@ -9,7 +9,12 @@ import java.util.List;
 public interface CartFacade {
 
     void addProductVariantToCart(Long productVariantId, int quantity);
+
+    void deleteProductVariantFromCart(Long productVariantId);
+
     CartDto getActiveCart();
+
     List<CartEntryDto> getCartEntries();
+
     List<OrderDto> getUserOrders();
 }

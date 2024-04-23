@@ -28,6 +28,11 @@ public class CartFacadeImpl implements CartFacade {
     }
 
     @Override
+    public void deleteProductVariantFromCart(Long productVariantId) {
+cartService.deleteProductVariantFromCart(productVariantId);
+    }
+
+    @Override
     public CartDto getActiveCart() {
         return new CartDto(cartService.getActiveCart(), getCartEntries());
     }
@@ -50,4 +55,6 @@ public class CartFacadeImpl implements CartFacade {
                 .map(OrderDto::new)
                 .toList();
     }
+
+
 }
