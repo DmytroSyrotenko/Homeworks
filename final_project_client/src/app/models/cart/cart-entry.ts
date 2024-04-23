@@ -1,5 +1,5 @@
 export interface CartEntry {
-
+  id:number
   name: string
   image: string
   color:string

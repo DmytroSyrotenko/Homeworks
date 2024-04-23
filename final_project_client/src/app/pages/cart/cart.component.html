@@ -14,27 +14,36 @@
               <th scope="col" class="text-right" style="width: 100px;">Price</th>
               <th scope="col" class="text-center" style="width: 120px;">Quantity</th>
               <th scope="col" class="text-right" style="width: 100px;">Total</th>
+              <th scope="col" class="text-right" style="width: 100px;">Remove item</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let entry of cart?.entries ">
+            <tr *ngFor="let entry of cart.entries ">
               <td class="p-4">
                 <div class="media align-items-center">
-                  <img src="{{ entry?.image }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                  <img src="{{ entry.image }}" class="d-block ui-w-40 ui-bordered mr-4" alt="">
                   <div class="media-body">
-                    <a href="/pdp/{{ entry?.productId }}" class="d-block text-dark">
-                      {{ entry?.name }}/{{ entry?.color }}/{{ entry?.ssd }}/{{ entry?.ram }}
+                    <a href="/pdp/{{ entry.productId }}" class="d-block text-dark">
+                      {{ entry.name }}/{{ entry.color }}/{{ entry.ssd }}/{{ entry.ram }}
                     </a>
                   </div>
                 </div>
               </td>
-              <td class="text-right font-weight-semibold align-middle p-4">{{ entry?.price }}</td>
-              <td class="text-center font-weight-semibold align-middle p-4">{{ entry.quantity }}</td>
+              <td class="text-right font-weight-semibold align-middle p-4">{{ entry.price }}</td>
+              <td class="text-right font-weight-semibold align-middle p-4">{{entry.quantity}}</td>
               <td class="text-right font-weight-semibold align-middle p-4">{{ entry.sum }}</td>
+              <td class="text-right font-weight-semibold align-middle p-4">
+                <div class="text-right">
+                  <button type="button" class="btn btn-danger" (click)="deleteItem(entry.id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                  </button>
+                </div>
+              </td>
             </tr>
             </tbody>
           </table>
         </div>
+
 
         <!-- Total price section -->
         <div class="d-flex justify-content-between align-items-center mt-4">

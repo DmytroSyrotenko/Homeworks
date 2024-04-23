@@ -52,6 +52,17 @@ export class CartComponent implements OnInit,OnDestroy{
       ))
   }
 
+  deleteItem(productVariantId: number):void{
+    this._subscription.add(
+      this._cartService.deleteItem(productVariantId).subscribe(
+       () => this._router.navigateByUrl('/cart').then(() => {
+                                                          window.location.reload();
+                                                        }),
+       (error)=>console.log('error', error)
+     ))
+  }
+
+
   ngOnDestroy(): void {
     this._subscription.unsubscribe()
   }

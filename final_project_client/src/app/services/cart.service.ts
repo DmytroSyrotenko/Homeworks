@@ -24,7 +24,7 @@ export class CartService {
   addToCart(productVariantId: number, quantity: number = 1): Observable<string> {
     let headers = new HttpHeaders();
     let token = this._authService.getToken();
-    headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
+    headers = headers.set('Authorization', `Bearer ${token}`)//добавляем хедері в хттп-рек куда и как нам надо
     let params = new HttpParams();
     params = params.set('productVariantId', productVariantId);
     params = params.set('quantity', quantity);
@@ -49,12 +49,24 @@ export class CartService {
     return this._http.post<string>(this._apiUrlOnlyForOrder, null, options);
   }
 
+  deleteItem(productVariantId: number):Observable<string> {
+    let headers = new HttpHeaders();
+    let token = this._authService.getToken();
+    headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
+    let params = new HttpParams();
+    params = params.set('productVariantId', productVariantId);
+    let options = {headers ,params}
+    return this._http.delete<string>(this._apiUrl, options);
+  }
+
+
   getUserOrders(): Observable<OrderInfo[]>{
     let headers = new HttpHeaders();
     let token = this._authService.getToken();
     headers = headers.set('Authorization', `Bearer ${token}`)//добавляем параметры в хттп-рек куда и как нам надо
     let options = {headers};
     return this._http.get<OrderInfo[]>(this._apiUrlOnlyForOrder, options)
+
   }
 
 }

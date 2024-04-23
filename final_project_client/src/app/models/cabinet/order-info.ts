@@ -1,5 +1,5 @@
 export interface OrderInfo{
-  id:string,
+  id:number,
   date:string,
   totalOrderSum:string
 }
